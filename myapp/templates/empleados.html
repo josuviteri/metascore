@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titulo %} Empleados del departamento {% endblock %}
+
+{% block contenido %}
+<h2>Lista de empleados</h2>
+<h3>{{ departamento.nombre }}</h3>
+{% if empleados %}
+	<ul>
+	{% for e in empleados %}
+		<li>
+			<a href="{% url 'detail' e.id %}">{{ e.nombre}}</a>
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+<p>No hay empleados creados.</p>
+{% endif %}
+{% endblock %}
