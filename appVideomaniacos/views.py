@@ -30,7 +30,10 @@ def lista_generos(request):
 def detalle_genero(request, genero_id):
     genero = get_object_or_404(Genero, pk=genero_id)
     videojuegos = Videojuego.objects.filter(genero=genero)
-    return render(request, 'detalle_genero.html', {'genero': genero, 'videojuegos': videojuegos})
+    return render(request, 'detalle_genero.html', {
+        'genero': genero,
+        'videojuegos': videojuegos
+    })
 
 def lista_plataformas(request):
     plataformas = Plataforma.objects.all()

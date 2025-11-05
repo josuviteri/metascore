@@ -1,24 +1,38 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block titulo %}{{ genero.nombre }} | Videomaníacos{% endblock %}
+{% block titulo %}{{ genero.nombre }} - Videomaníacos{% endblock %}
 
 {% block contenido %}
-<h2>Género: {{ genero.nombre }}</h2>
+<section>
+    <h2>Videojuegos del género: {{ genero.nombre }}</h2>
 
-{% if videojuegos %}
-<h3>Videojuegos de este género:</h3>
-<div class="grid-videojuegos">
-    {% for v in videojuegos %}
-    <div class="card-videojuego">
-        <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.nombre }}" class="img-videojuego">
-        <h4><a href="{% url 'detalle_videojuego' v.id %}">{{ v.nombre }}</a></h4>
+    {% if videojuegos %}
+    <div class="grid">
+        {% for juego in videojuegos %}
+        <article class="card">
+            <h3>{{ juego.nombre }}</h3>
+
+            {% if juego.imagen %}
+                <img src="{% static 'images/' %}{{ juego.imagen }}" alt="Imagen de {{ juego.nombre }}">
+            {% else %}
+                <img src="{% static 'images/no-image.png' %}" alt="Sin imagen disponible">
+            {% endif %}
+
+            <p>{{ juego.descripcion|truncatewords:20 }}</p>
+
+            <p><strong>Plataformas:</strong>
+                {% for p in juego.plataformas.all %}
+                    {{ p.nombre }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+
+            <a class="nav-btn" href="{% url 'detalle_videojuego' juego.id %}">Ver detalles</a>
+        </article>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-{% else %}
-<p>No hay videojuegos registrados para este género.</p>
-{% endif %}
-
-<a href="{% url 'generos' %}" class="btn-volver">← Volver a géneros</a>
+    {% else %}
+    <p>No hay videojuegos registrados en este género.</p>
+    {% endif %}
+</section>
 {% endblock %}

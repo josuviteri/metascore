@@ -19,7 +19,7 @@ class Videojuego(models.Model):
     descripcion = models.TextField(blank=True, null=True)
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE)
     plataformas = models.ManyToManyField(Plataforma)
-    imagen = models.CharField(max_length=200, blank=True, null=True)
+    imagen = models.ImageField(upload_to='videojuegos/', blank=True, null=True)
     fecha_lanzamiento = models.DateField(blank=True, null=True)  # 👈 nuevo campo
 
     def __str__(self):
