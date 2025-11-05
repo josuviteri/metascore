@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fafafa;
+    color: #222;
+}
+
+header, footer {
+    background: #1e1e2f;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+header a {
+    color: #00b4d8;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 1em;
+}
+
+h2 {
+    color: #2b2d42;
+    border-bottom: 2px solid #00b4d8;
+    padding-bottom: 0.3em;
+}
+
+.listado {
+    list-style: none;
+    padding: 0;
+}
+
+.listado li {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    padding: 1em;
+    border-radius: 8px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}

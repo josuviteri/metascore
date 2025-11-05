@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Videomaníacos{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'index' %}">🎮 Videomaníacos</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'videojuegos' %}">Videojuegos</a></li>
+                <li><a href="{% url 'generos' %}">Géneros</a></li>
+                <li><a href="{% url 'plataformas' %}">Plataformas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Proyecto Videomaníacos — IW-BI-xx © 2025</p>
+    </footer>
+</body>
+</html>

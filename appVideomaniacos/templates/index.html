@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %}Inicio - Videomaníacos{% endblock %}
+{% block contenido %}
+<section>
+    <h2>Últimos videojuegos por género</h2>
+    <div class="grid">
+        {% for genero, videojuego in videojuegos_por_genero.items %}
+            {% if videojuego %}
+            <article class="card">
+                <h3>{{ genero.nombre }}</h3>
+                {% if videojuego.imagen %}
+                    <img src="{{ videojuego.imagen }}" alt="Portada de {{ videojuego.titulo }}">
+                {% endif %}
+                <h4><a href="{% url 'detalle_videojuego' videojuego.id %}">{{ videojuego.titulo }}</a></h4>
+                <p>Lanzamiento: {{ videojuego.fecha_lanzamiento|date:"d/m/Y" }}</p>
+            </article>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

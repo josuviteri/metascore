@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block titulo %}Géneros - Videomaníacos{% endblock %}
+{% block contenido %}
+<h2>Géneros de videojuegos</h2>
+<ul class="listado">
+    {% for g in generos %}
+    <li>
+        <a href="{% url 'detalle_genero' g.id %}">{{ g.nombre }}</a> — {{ g.descripcion|truncatewords:10 }}
+    </li>
+    {% empty %}
+        <li>No hay géneros disponibles.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

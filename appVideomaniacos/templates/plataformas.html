@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block titulo %}Plataformas - Videomaníacos{% endblock %}
+{% block contenido %}
+<h2>Plataformas</h2>
+<ul class="listado">
+    {% for p in plataformas %}
+    <li>
+        <a href="{% url 'detalle_plataforma' p.id %}">{{ p.nombre }}</a>
+        {% if p.fabricante %} — Fabricante: {{ p.fabricante }}{% endif %}
+    </li>
+    {% empty %}
+        <li>No hay plataformas registradas.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

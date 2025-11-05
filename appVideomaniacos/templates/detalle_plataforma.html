@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %}{{ plataforma.nombre }} - Plataforma{% endblock %}
+{% block contenido %}
+<h2>{{ plataforma.nombre }}</h2>
+{% if plataforma.fabricante %}
+<p><strong>Fabricante:</strong> {{ plataforma.fabricante }}</p>
+{% endif %}
+
+<h3>Videojuegos disponibles en esta plataforma:</h3>
+<ul class="listado">
+    {% for v in videojuegos %}
+    <li>
+        <a href="{% url 'detalle_videojuego' v.id %}">{{ v.titulo }}</a>
+        — Género: {{ v.genero.nombre }}
+    </li>
+    {% empty %}
+        <li>No hay videojuegos en esta plataforma.</li>
+    {% endfor %}
+</ul>
+<p><a href="{% url 'plataformas' %}">← Volver a plataformas</a></p>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block titulo %}{{ genero.nombre }} - Género{% endblock %}
+{% block contenido %}
+<h2>{{ genero.nombre }}</h2>
+<p>{{ genero.descripcion }}</p>
+
+<h3>Videojuegos de este género:</h3>
+<ul class="listado">
+    {% for v in videojuegos %}
+    <li>
+        <a href="{% url 'detalle_videojuego' v.id %}">{{ v.titulo }}</a>
+        — Plataformas:
+        {% for p in v.plataformas.all %}
+            {{ p.nombre }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </li>
+    {% empty %}
+        <li>No hay videojuegos en este género.</li>
+    {% endfor %}
+</ul>
+<p><a href="{% url 'generos' %}">← Volver a géneros</a></p>
+{% endblock %}
