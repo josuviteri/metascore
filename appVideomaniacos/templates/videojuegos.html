@@ -1,21 +1,27 @@
 {% extends "base.html" %}
-{% block titulo %}Videojuegos - Videomaníacos{% endblock %}
+{% load static %}
+
+{% block titulo %}Videojuegos | Videomaníacos{% endblock %}
+
 {% block contenido %}
-<h2>Lista de videojuegos</h2>
-<ul class="listado">
+<h2>Lista de Videojuegos</h2>
+
+{% if videojuegos %}
+<div class="grid-videojuegos">
     {% for v in videojuegos %}
-    <li>
-        <a href="{% url 'detalle_videojuego' v.id %}">{{ v.titulo }}</a>
-        — {{ v.genero.nombre }} |
-        Plataformas:
-        {% for p in v.plataformas.all %}
-            {{ p.nombre }}{% if not forloop.last %}, {% endif %}
-        {% empty %}
-            <em>Sin plataformas</em>
-        {% endfor %}
-    </li>
-    {% empty %}
-        <li>No hay videojuegos registrados.</li>
+    <div class="card-videojuego">
+        <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.nombre }}" class="img-videojuego">
+        <h3><a href="{% url 'detalle_videojuego' v.id %}">{{ v.nombre }}</a></h3>
+        <p><strong>Género:</strong> {{ v.genero.nombre }}</p>
+        <p><strong>Plataformas:</strong> 
+            {% for p in v.plataformas.all %}
+                {{ p.nombre }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    </div>
     {% endfor %}
-</ul>
+</div>
+{% else %}
+<p>No hay videojuegos registrados.</p>
+{% endif %}
 {% endblock %}

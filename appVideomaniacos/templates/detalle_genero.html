@@ -1,22 +1,24 @@
 {% extends "base.html" %}
-{% block titulo %}{{ genero.nombre }} - Género{% endblock %}
-{% block contenido %}
-<h2>{{ genero.nombre }}</h2>
-<p>{{ genero.descripcion }}</p>
+{% load static %}
 
+{% block titulo %}{{ genero.nombre }} | Videomaníacos{% endblock %}
+
+{% block contenido %}
+<h2>Género: {{ genero.nombre }}</h2>
+
+{% if videojuegos %}
 <h3>Videojuegos de este género:</h3>
-<ul class="listado">
+<div class="grid-videojuegos">
     {% for v in videojuegos %}
-    <li>
-        <a href="{% url 'detalle_videojuego' v.id %}">{{ v.titulo }}</a>
-        — Plataformas:
-        {% for p in v.plataformas.all %}
-            {{ p.nombre }}{% if not forloop.last %}, {% endif %}
-        {% endfor %}
-    </li>
-    {% empty %}
-        <li>No hay videojuegos en este género.</li>
+    <div class="card-videojuego">
+        <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.nombre }}" class="img-videojuego">
+        <h4><a href="{% url 'detalle_videojuego' v.id %}">{{ v.nombre }}</a></h4>
+    </div>
     {% endfor %}
-</ul>
-<p><a href="{% url 'generos' %}">← Volver a géneros</a></p>
+</div>
+{% else %}
+<p>No hay videojuegos registrados para este género.</p>
+{% endif %}
+
+<a href="{% url 'generos' %}" class="btn-volver">← Volver a géneros</a>
 {% endblock %}

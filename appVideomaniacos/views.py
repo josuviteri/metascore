@@ -5,8 +5,15 @@ from .models import Genero, Plataforma, Videojuego
 
 def index(request):
     generos = Genero.objects.all()
-    videojuegos_por_genero = {g: Videojuego.objects.filter(genero=g).order_by('-fecha_lanzamiento').first() for g in generos}
-    return render(request, 'index.html', {'videojuegos_por_genero': videojuegos_por_genero})
+    videojuegos_por_genero = {}
+
+    for genero in generos:
+        videojuego = Videojuego.objects.filter(genero=genero).order_by('-fecha_lanzamiento').first()
+        videojuegos_por_genero[genero] = videojuego
+
+    return render(request, 'index.html', {
+        'videojuegos_por_genero': videojuegos_por_genero
+    })
 
 def lista_videojuegos(request):
     videojuegos = Videojuego.objects.all()

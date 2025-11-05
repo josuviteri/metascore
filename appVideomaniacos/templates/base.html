@@ -9,13 +9,12 @@
 </head>
 <body>
     <header>
-        <h1><a href="{% url 'index' %}">🎮 Videomaníacos</a></h1>
+        <h1>🎮 Videomaníacos</h1>
         <nav>
-            <ul>
-                <li><a href="{% url 'videojuegos' %}">Videojuegos</a></li>
-                <li><a href="{% url 'generos' %}">Géneros</a></li>
-                <li><a href="{% url 'plataformas' %}">Plataformas</a></li>
-            </ul>
+            <a href="{% url 'index' %}">Inicio</a> |
+            <a href="{% url 'videojuegos' %}">Videojuegos</a> |
+            <a href="{% url 'generos' %}">Géneros</a> |
+            <a href="{% url 'plataformas' %}">Plataformas</a>
         </nav>
     </header>
 
@@ -24,7 +23,7 @@
     </main>
 
     <footer>
-        <p>Proyecto Videomaníacos — IW-BI-10 © 2025</p>
+        <p>© 2025 Videomaníacos — IW-BI-10</p>
     </footer>
 </body>
 </html>

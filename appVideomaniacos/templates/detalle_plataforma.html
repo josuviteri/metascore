@@ -1,21 +1,24 @@
 {% extends "base.html" %}
-{% block titulo %}{{ plataforma.nombre }} - Plataforma{% endblock %}
+{% load static %}
+
+{% block titulo %}{{ plataforma.nombre }} | Videomaníacos{% endblock %}
+
 {% block contenido %}
-<h2>{{ plataforma.nombre }}</h2>
-{% if plataforma.fabricante %}
-<p><strong>Fabricante:</strong> {{ plataforma.fabricante }}</p>
+<h2>Plataforma: {{ plataforma.nombre }}</h2>
+
+{% if videojuegos %}
+<h3>Videojuegos disponibles en esta plataforma:</h3>
+<div class="grid-videojuegos">
+    {% for v in videojuegos %}
+    <div class="card-videojuego">
+        <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.nombre }}" class="img-videojuego">
+        <h4><a href="{% url 'detalle_videojuego' v.id %}">{{ v.nombre }}</a></h4>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No hay videojuegos registrados en esta plataforma.</p>
 {% endif %}
 
-<h3>Videojuegos disponibles en esta plataforma:</h3>
-<ul class="listado">
-    {% for v in videojuegos %}
-    <li>
-        <a href="{% url 'detalle_videojuego' v.id %}">{{ v.titulo }}</a>
-        — Género: {{ v.genero.nombre }}
-    </li>
-    {% empty %}
-        <li>No hay videojuegos en esta plataforma.</li>
-    {% endfor %}
-</ul>
-<p><a href="{% url 'plataformas' %}">← Volver a plataformas</a></p>
+<a href="{% url 'plataformas' %}" class="btn-volver">← Volver a plataformas</a>
 {% endblock %}

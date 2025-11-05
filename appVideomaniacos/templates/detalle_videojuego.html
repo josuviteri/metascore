@@ -1,19 +1,25 @@
 {% extends "base.html" %}
-{% block titulo %}{{ videojuego.titulo }} - Videomaníacos{% endblock %}
+{% load static %}
+
+{% block titulo %}{{ videojuego.nombre }} | Videomaníacos{% endblock %}
+
 {% block contenido %}
-<article class="detalle">
-    <h2>{{ videojuego.titulo }}</h2>
-    {% if videojuego.imagen %}
-        <img src="{{ videojuego.imagen }}" alt="Portada de {{ videojuego.titulo }}">
-    {% endif %}
-    <p><strong>Género:</strong> <a href="{% url 'detalle_genero' videojuego.genero.id %}">{{ videojuego.genero.nombre }}</a></p>
-    <p><strong>Fecha de lanzamiento:</strong> {{ videojuego.fecha_lanzamiento|date:"d/m/Y" }}</p>
-    <p><strong>Plataformas:</strong>
-        {% for p in videojuego.plataformas.all %}
-            <a href="{% url 'detalle_plataforma' p.id %}">{{ p.nombre }}</a>{% if not forloop.last %}, {% endif %}
-        {% endfor %}
-    </p>
-    <p>{{ videojuego.descripcion }}</p>
-</article>
-<p><a href="{% url 'videojuegos' %}">← Volver a la lista</a></p>
+<h2>{{ videojuego.nombre }}</h2>
+
+<div class="detalle-videojuego">
+    <img src="{% static 'images/' %}{{ videojuego.imagen }}" alt="{{ videojuego.nombre }}" class="img-videojuego">
+    <div class="info">
+        <p><strong>Descripción:</strong> {{ videojuego.descripcion }}</p>
+        <p><strong>Género:</strong> 
+            <a href="{% url 'detalle_genero' videojuego.genero.id %}">{{ videojuego.genero.nombre }}</a>
+        </p>
+        <p><strong>Plataformas:</strong>
+            {% for p in videojuego.plataformas.all %}
+                <a href="{% url 'detalle_plataforma' p.id %}">{{ p.nombre }}</a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+</div>
+
+<a href="{% url 'videojuegos' %}" class="btn-volver">← Volver a la lista</a>
 {% endblock %}
