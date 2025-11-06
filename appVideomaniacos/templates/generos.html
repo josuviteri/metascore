@@ -17,6 +17,12 @@
             {% elif g.nombre|lower == 'rpg' %}genero-rpg
             {% elif g.nombre|lower == 'deportes' %}genero-deportes
             {% elif g.nombre|lower == 'mundo abierto' %}genero-mundo-abierto
+            {% elif g.nombre|lower == 'shooter' %}genero-shooter
+            {% elif g.nombre|lower == 'estrategia' %}genero-estrategia
+            {% elif g.nombre|lower == 'simulación' %}genero-simulacion
+            {% elif g.nombre|lower == 'puzzle' %}genero-puzzle
+            {% elif g.nombre|lower == 'plataformas' %}genero-plataformas
+            {% elif g.nombre|lower == 'horror' %}genero-horror
             {% elif g.nombre|lower == 'roguelike' %}genero-roguelike
             {% else %}genero-default{% endif %}">
             
@@ -33,6 +39,18 @@
                     <img src="{% static 'images/icon_mundoabierto.png' %}" alt="Mundo Abierto">
                 {% elif g.nombre|lower == "roguelike" %}
                     <img src="{% static 'images/icon_roguelike.png' %}" alt="Roguelike">
+                {% elif g.nombre|lower == "shooter" %}
+                    <img src="{% static 'images/icon_shooter.png' %}" alt="Shooter">
+                {% elif g.nombre|lower == "estrategia" %}
+                    <img src="{% static 'images/icon_estrategia.png' %}" alt="Estrategia">
+                {% elif g.nombre|lower == "simulación" %}
+                    <img src="{% static 'images/icon_simulacion.png' %}" alt="Simulación">
+                {% elif g.nombre|lower == "puzzle" %}
+                    <img src="{% static 'images/icon_puzzle.png' %}" alt="Puzzle">
+                {% elif g.nombre|lower == "plataformas" %}
+                    <img src="{% static 'images/icon_plataformas.png' %}" alt="Plataformas">
+                {% elif g.nombre|lower == "horror" %}
+                    <img src="{% static 'images/icon_horror.png' %}" alt="Horror"> 
                 {% else %}
                     <img src="{% static 'images/icon_genero.png' %}" alt="Género">
                 {% endif %}
