@@ -15,7 +15,7 @@
         {% for p in plataformas %}
         <div class="card-plataforma {{ p.nombre|lower|slugify }}">
             <div class="plataforma-icono">
-                <img src="{% static 'img/plataformas/'|add:p.nombre|add:'.png' %}" alt="{{ p.nombre }}">
+                <img src="{% static 'images/'|add:p.nombre|add:'.png' %}" alt="{{ p.nombre }}">
             </div>
             <h3 class="nombre-plataforma">{{ p.nombre }}</h3>
             <a href="{% url 'detalle_plataforma' p.id %}" class="btn-ver">Ver detalles</a>

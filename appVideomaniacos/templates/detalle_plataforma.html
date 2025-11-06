@@ -7,11 +7,7 @@
 <section class="detalle-plataforma {{ plataforma.nombre|lower|slugify }}">
     <div class="plataforma-header">
         <div class="plataforma-imagen">
-            {% if plataforma.imagen %}
-                <img src="{% static 'images/' %}{{ plataforma.imagen }}" alt="{{ plataforma.nombre }}">
-            {% else %}
-                <img src="{% static 'images/no-image.png' %}" alt="Sin imagen disponible">
-            {% endif %}
+            <img src="{% static 'images/'|add:plataforma.nombre|add:'.png' %}" alt="{{ plataforma.nombre }}">
         </div>
         <div class="plataforma-info">
             <h2>{{ plataforma.nombre }}</h2>
