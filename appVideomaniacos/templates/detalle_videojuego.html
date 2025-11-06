@@ -30,6 +30,10 @@
                 {% endfor %}
             </p>
 
+            <p><strong>Fecha de Lanzamiento:</strong>
+                {{ videojuego.fecha_lanzamiento }}
+            </p>
+
             <div class="detalle-botones">
                 <a href="{% url 'videojuegos' %}" class="btn-volver">← Volver</a>
                 <a href="{% url 'index' %}" class="btn-inicio">Inicio</a>
