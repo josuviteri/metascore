@@ -4,22 +4,37 @@
 {% block titulo %}{{ videojuego.nombre }} - Videomaníacos{% endblock %}
 
 {% block contenido %}
-<h2>{{ videojuego.nombre }}</h2>
+<section class="detalle-videojuego-section">
+    <div class="detalle-card">
+        <div class="detalle-img">
+            <img src="{% static 'images/' %}{{ videojuego.imagen }}" alt="{{ videojuego.nombre }}">
+        </div>
 
-<div class="detalle-videojuego">
-    <img src="{% static 'images/' %}{{ videojuego.imagen }}" alt="{{ videojuego.nombre }}" class="img-videojuego">
-    <div class="info">
-        <p><strong>Descripción:</strong> {{ videojuego.descripcion }}</p>
-        <p><strong>Género:</strong> 
-            <a href="{% url 'detalle_genero' videojuego.genero.id %}">{{ videojuego.genero.nombre }}</a>
-        </p>
-        <p><strong>Plataformas:</strong>
-            {% for p in videojuego.plataformas.all %}
-                <a href="{% url 'detalle_plataforma' p.id %}">{{ p.nombre }}</a>{% if not forloop.last %}, {% endif %}
-            {% endfor %}
-        </p>
+        <div class="detalle-info">
+            <h2 class="detalle-titulo">{{ videojuego.nombre }}</h2>
+
+            <div class="detalle-descripcion-box">
+                <h4>Descripción</h4>
+                <p>{{ videojuego.descripcion }}</p>
+            </div>
+
+            <p><strong>Género:</strong>
+                <a href="{% url 'detalle_genero' videojuego.genero.id %}" class="link-genero">
+                    {{ videojuego.genero.nombre }}
+                </a>
+            </p>
+
+            <p><strong>Plataformas:</strong>
+                {% for p in videojuego.plataformas.all %}
+                    <a href="{% url 'detalle_plataforma' p.id %}" class="link-plataforma">{{ p.nombre }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+
+            <div class="detalle-botones">
+                <a href="{% url 'videojuegos' %}" class="btn-volver">← Volver</a>
+                <a href="{% url 'index' %}" class="btn-inicio">Inicio</a>
+            </div>
+        </div>
     </div>
-</div>
-
-<a href="{% url 'videojuegos' %}" class="btn-volver">← Volver a la lista</a>
+</section>
 {% endblock %}

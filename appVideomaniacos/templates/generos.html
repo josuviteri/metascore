@@ -4,15 +4,47 @@
 {% block titulo %}Géneros - Videomaníacos{% endblock %}
 
 {% block contenido %}
-<h2>Géneros de Videojuegos</h2>
+<section class="generos-section">
+    <h2>Explora los Géneros de Videojuegos</h2>
+    <p class="intro-generos">Descubre los diferentes estilos de videojuegos disponibles. Cada género tiene su propia esencia.</p>
 
-{% if generos %}
-<ul class="lista-generos">
-    {% for g in generos %}
-    <li><a href="{% url 'detalle_genero' g.id %}">{{ g.nombre }}</a></li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No hay géneros registrados.</p>
-{% endif %}
+    {% if generos %}
+    <div class="grid-generos">
+        {% for g in generos %}
+        <div class="card-genero 
+            {% if g.nombre|lower == 'acción' %}genero-accion
+            {% elif g.nombre|lower == 'aventura' %}genero-aventura
+            {% elif g.nombre|lower == 'rpg' %}genero-rpg
+            {% elif g.nombre|lower == 'deportes' %}genero-deportes
+            {% elif g.nombre|lower == 'mundo abierto' %}genero-mundo-abierto
+            {% elif g.nombre|lower == 'roguelike' %}genero-roguelike
+            {% else %}genero-default{% endif %}">
+            
+            <div class="icono-genero">
+                {% if g.nombre|lower == "acción" %}
+                    <img src="{% static 'images/icon_accion.png' %}" alt="Acción">
+                {% elif g.nombre|lower == "aventura" %}
+                    <img src="{% static 'images/icon_aventura.png' %}" alt="Aventura">
+                {% elif g.nombre|lower == "rpg" %}
+                    <img src="{% static 'images/icon_rpg.png' %}" alt="RPG">
+                {% elif g.nombre|lower == "deportes" %}
+                    <img src="{% static 'images/icon_deportes.png' %}" alt="Deportes">
+                {% elif g.nombre|lower == "mundo abierto" %}
+                    <img src="{% static 'images/icon_mundoabierto.png' %}" alt="Mundo Abierto">
+                {% elif g.nombre|lower == "roguelike" %}
+                    <img src="{% static 'images/icon_roguelike.png' %}" alt="Roguelike">
+                {% else %}
+                    <img src="{% static 'images/icon_genero.png' %}" alt="Género">
+                {% endif %}
+            </div>
+
+            <h3>{{ g.nombre }}</h3>
+            <a href="{% url 'detalle_genero' g.id %}" class="btn-ver-destacado">Ver juegos</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No hay géneros registrados.</p>
+    {% endif %}
+</section>
 {% endblock %}

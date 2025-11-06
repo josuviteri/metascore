@@ -1,8 +1,13 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif; /* 🔹 mantiene tu tipo de letra */
+}
+
 /* ==== GLOBAL STYLES ==== */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background: #fafafa;
     color: #222;
 }
@@ -127,6 +132,9 @@ h2 {
     height: auto;
     border-radius: 6px;
 }
+main {
+    flex: 1;
+}
 
 /* ==== FOOTER ==== */
 footer {
@@ -136,4 +144,951 @@ footer {
     padding: 1em 0;
     font-size: 0.9em;
     margin-top: 2em;
+}
+
+
+/* ==== VIDEOJUEGOS ==== */
+.videojuegos-section {
+    text-align: center;
+    padding: 2em 1em;
+}
+
+.videojuegos-section h2 {
+    font-size: 2em;
+    color: #1e1e2f;
+    margin-bottom: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.videojuegos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2em;
+    justify-items: center;
+    align-items: stretch;
+}
+
+.videojuego-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.videojuego-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.videojuego-img-container {
+    background: #000;
+    overflow: hidden;
+    height: 180px;
+}
+
+.videojuego-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.videojuego-card:hover .videojuego-img {
+    opacity: 0.9;
+}
+
+.videojuego-info {
+    padding: 1em;
+    text-align: left;
+}
+
+.videojuego-title {
+    font-size: 1.2em;
+    color: #1e1e2f;
+    margin-bottom: 0.5em;
+}
+
+.videojuego-title a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.videojuego-title a:hover {
+    color: #00b4d8;
+}
+
+.videojuego-genero, .videojuego-plataformas {
+    margin: 0.4em 0;
+    font-size: 0.95em;
+}
+
+.btn-ver-mas {
+    display: inline-block;
+    margin-top: 0.8em;
+    background-color: #00b4d8;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-ver-mas:hover {
+    background-color: #0077b6;
+    transform: translateY(-2px);
+}
+
+.mensaje-vacio {
+    color: #777;
+    font-style: italic;
+    margin-top: 2em;
+}
+
+/* ==== DETALLE VIDEOJUEGO (versión mejorada tipo Steam/Metacritic) ==== */
+.detalle-videojuego-section {
+    padding: 3em 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #f9fafc, #e8f0ff);
+}
+
+.detalle-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    max-width: 950px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detalle-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+.detalle-img {
+    flex: 1 1 350px;
+    max-height: 420px;
+    overflow: hidden;
+    background: #000;
+}
+
+.detalle-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.detalle-info {
+    flex: 1 1 450px;
+    padding: 2em;
+    text-align: left;
+}
+
+.detalle-titulo {
+    color: #1e1e2f;
+    font-size: 2.2em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #00b4d8;
+    padding-bottom: 0.4em;
+}
+
+/* ==== CAJA DE DESCRIPCIÓN ==== */
+.detalle-descripcion-box {
+    background: linear-gradient(145deg, #f4f8ff, #e9f2ff);
+    border-left: 5px solid #00b4d8;
+    border-radius: 10px;
+    padding: 1em 1.2em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.detalle-descripcion-box h4 {
+    margin-top: 0;
+    color: #0077b6;
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+}
+
+.detalle-descripcion-box p {
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ==== ENLACES ==== */
+.link-genero, .link-plataforma {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.link-genero:hover, .link-plataforma:hover {
+    color: #00b4d8;
+    text-decoration: underline;
+}
+
+/* ==== BOTONES ==== */
+.detalle-botones {
+    margin-top: 1.8em;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.btn-volver,
+.btn-inicio {
+    display: inline-block;
+    padding: 0.7em 1.4em;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    min-width: 120px; /* 🔹 asegura consistencia */
+}
+
+/* Botón Volver */
+.btn-volver {
+    background: #00b4d8;
+    color: #fff;
+}
+
+.btn-volver:hover {
+    background: #0077b6;
+    transform: translateY(-2px);
+}
+
+/* Botón Inicio */
+.btn-inicio {
+    background: #1e1e2f;
+    color: #fff;
+}
+
+.btn-inicio:hover {
+    background: #2a2a40;
+    transform: translateY(-2px);
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+    .detalle-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .detalle-info {
+        padding: 1.5em;
+    }
+
+    .detalle-titulo {
+        font-size: 1.7em;
+    }
+
+    .detalle-descripcion-box {
+        margin: 1em auto;
+    }
+}
+
+/* ==== SECCIÓN DE GÉNEROS ==== */
+.generos-section {
+    text-align: center;
+    padding: 3em 1em;
+    background: linear-gradient(180deg, #f7faff, #eef6ff);
+    min-height: 75vh;
+}
+
+.generos-section h2 {
+    font-size: 2.2em;
+    color: #1e1e2f;
+    margin-bottom: 0.5em;
+}
+
+.intro-generos {
+    color: #444;
+    font-size: 1.1em;
+    margin-bottom: 2em;
+}
+
+/* ==== GRID ==== */
+.grid-generos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5em;
+    justify-items: center;
+}
+
+/* ==== CARD DE GÉNERO ==== */
+.card-genero {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    padding: 2em 1em;
+    width: 230px;
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-genero:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ==== ICONOS ==== */
+.icono-genero {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.icono-genero img {
+    width: 48px;
+    height: 48px;
+    filter: brightness(0) invert(1);
+}
+
+/* ==== COLORES PERSONALIZADOS ==== */
+.genero-accion .icono-genero { background: #ef233c; }      /* Rojo intenso */
+.genero-aventura .icono-genero { background: #ffb703; }    /* Amarillo cálido */
+.genero-rpg .icono-genero { background: #7209b7; }         /* Púrpura */
+.genero-deportes .icono-genero { background: #06d6a0; }    /* Verde esmeralda */
+.genero-carreras .icono-genero { background: #118ab2; }    /* Azul deportivo */
+.genero-mundo-abierto .icono-genero { background: linear-gradient(135deg, #28a745, #5fd17b); } /* Verde natural */
+.genero-roguelike .icono-genero { background: linear-gradient(135deg, #6f42c1, #a678f0); } /* Púrpura místico */
+.genero-default .icono-genero { background: #00b4d8; }     /* Azul estándar */
+
+/* ==== BOTÓN ==== */
+.btn-ver {
+    background: #1e1e2f;
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1.2em;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-ver:hover {
+    background: #00b4d8;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .card-genero {
+        width: 90%;
+    }
+}
+
+/* ==== DETALLE DE GÉNERO ==== */
+.genero-detalle {
+    padding: 3em 2em;
+    background: linear-gradient(180deg, #f9f9f9, #eef6ff);
+    min-height: 75vh;
+}
+
+.header-genero {
+    text-align: center;
+    margin-bottom: 2.5em;
+}
+
+.header-genero h2 {
+    font-size: 2.2em;
+    color: #1e1e2f;
+    margin-bottom: 0.3em;
+}
+
+.subtitulo-genero {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* ==== GRID ==== */
+.grid-genero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2em;
+    justify-items: center;
+}
+
+/* ==== CARD ==== */
+.card-genero-juego {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-genero-juego:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* ==== IMAGEN ==== */
+.imagen-juego img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* ==== CONTENIDO ==== */
+.contenido-juego {
+    padding: 1em 1.2em;
+    text-align: center;
+}
+
+.contenido-juego h3 {
+    color: #1e1e2f;
+    margin-bottom: 0.6em;
+}
+
+.descripcion {
+    color: #444;
+    font-size: 0.95em;
+    margin-bottom: 0.8em;
+}
+
+.plataformas {
+    font-size: 0.9em;
+    color: #333;
+    margin-bottom: 1em;
+}
+
+/* ==== BOTONES ==== */
+.btn-ver {
+    background: #00b4d8;
+    color: white;
+    text-decoration: none;
+    padding: 0.6em 1.4em;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-ver:hover {
+    background: #0077b6;
+    transform: translateY(-2px);
+}
+
+.btn-volver {
+    display: inline-block;
+    margin-top: 2.5em;
+    background: #1e1e2f;
+    color: white;
+    text-decoration: none;
+    padding: 0.7em 1.5em;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background: #00b4d8;
+}
+
+/* ==== SIN JUEGOS ==== */
+.sin-juegos {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+    margin-top: 2em;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 600px) {
+    .grid-genero {
+        grid-template-columns: 1fr;
+    }
+
+    .card-genero-juego {
+        width: 95%;
+    }
+}
+
+/* ==== PLATAFORMAS ==== */
+.plataformas-section {
+    text-align: center;
+    padding: 2em;
+}
+
+.header-plataformas h2 {
+    color: #2b2d42;
+    font-size: 2em;
+    margin-bottom: 0.2em;
+}
+
+.subtitulo-plataformas {
+    color: #555;
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+}
+
+.grid-plataformas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    justify-content: center;
+}
+
+.card-plataforma {
+    width: 200px;
+    padding: 1.5em;
+    border-radius: 12px;
+    text-align: center;
+    color: white; /* <-- letras en blanco */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card-plataforma:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.plataforma-icono img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+/* ==== Botón Ver Detalles ==== */
+.btn-ver {
+    display: inline-block;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    margin-top: 0.8em;
+    transition: all 0.3s ease;
+}
+
+.btn-ver:hover {
+    background-color: rgba(255,255,255,0.4);
+}
+
+/* ==== Colores por plataforma (más intensos) ==== */
+.card-plataforma.playstation { background: rgba(0, 70, 160, 0.7); }
+.card-plataforma.xbox { background: rgba(0, 120, 0, 0.7); }
+.card-plataforma.nintendo { background: rgba(200, 0, 0, 0.7); }
+.card-plataforma.pc { background: rgba(80, 80, 80, 0.7); }
+.card-plataforma.steam { background: rgba(30, 60, 90, 0.7); }
+.card-plataforma.switch { background: rgba(220, 0, 0, 0.7); }
+
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 600px) {
+    .grid-plataformas {
+        grid-template-columns: 1fr;
+    }
+
+    .card-plataforma {
+        width: 90%;
+    }
+}
+
+/* ==== DETALLE PLATAFORMA GENERAL ==== */
+.detalle-plataforma {
+    padding: 3em 2em;
+    min-height: 80vh;
+    color: #222;
+    transition: background 0.4s ease;
+}
+
+.plataforma-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    margin-bottom: 2.5em;
+}
+
+.plataforma-imagen img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    background: white;
+    padding: 1em;
+}
+
+.plataforma-info {
+    max-width: 500px;
+}
+
+.plataforma-info h2 {
+    font-size: 2em;
+    margin-bottom: 0.4em;
+    color: inherit;
+}
+
+.titulo-videojuegos {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-bottom: 3px solid currentColor;
+    display: inline-block;
+    padding-bottom: 0.3em;
+}
+
+/* ==== BOTÓN VOLVER ==== */
+.btn-volver {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.7em 1.5em;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    transform: translateY(-2px);
+}
+
+/* ==== COLORES ESPECÍFICOS POR PLATAFORMA ==== */
+
+/* PlayStation */
+.playstation {
+    background: linear-gradient(180deg, #001f3f, #0033a0);
+    color: #fff;
+}
+
+.playstation .btn-volver {
+    background: #007bff;
+}
+.playstation .btn-volver:hover {
+    background: #0056b3;
+}
+
+/* Xbox */
+.xbox {
+    background: linear-gradient(180deg, #107c10, #004d00);
+    color: #fff;
+}
+
+.xbox .btn-volver {
+    background: #1ed760;
+}
+.xbox .btn-volver:hover {
+    background: #159e4a;
+}
+
+/* Nintendo Switch */
+.nintendo {
+    background: linear-gradient(180deg, #e60012, #b3000d);
+    color: #fff;
+}
+
+.nintendo .btn-volver {
+    background: #ff4d4d;
+}
+.nintendo .btn-volver:hover {
+    background: #cc0000;
+}
+
+/* PC */
+.pc {
+    background: linear-gradient(180deg, #2c2c2c, #1a1a1a);
+}
+
+.pc .btn-volver {
+    background: #00b4d8;
+}
+.pc .btn-volver:hover {
+    background: #0077b6;
+}
+
+/* Default fallback */
+.detalle-plataforma:not(.playstation):not(.xbox):not(.nintendo):not(.pc):not(.steamdeck) {
+    background: linear-gradient(180deg, #f5faff, #e8f0ff);
+}
+
+/* ==== DETALLE PLATAFORMA CON COLORES ==== */
+.detalle-plataforma {
+    padding: 2em;
+    min-height: 80vh;
+    transition: background 0.4s ease, color 0.3s ease;
+}
+
+.detalle-plataforma h2, 
+.detalle-plataforma h3, 
+.detalle-plataforma h4 {
+    color: inherit;
+}
+
+.detalle-plataforma .btn-volver {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.7em 1.4em;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 1.5em;
+    transition: all 0.3s ease;
+}
+
+/* === PlayStation === */
+.playstation, .playstation-5 {
+    background: linear-gradient(180deg, #001f3f, #0033a0);
+    color: #fff;
+}
+.playstation .btn-volver, .playstation-5 .btn-volver {
+    background: #007bff;
+}
+.playstation .btn-volver:hover, .playstation-5 .btn-volver:hover {
+    background: #0056b3;
+}
+
+/* === Xbox === */
+.xbox, .xbox-series-x {
+    background: linear-gradient(180deg, #107c10, #004d00);
+    color: #fff;
+}
+.xbox .btn-volver, .xbox-series-x .btn-volver {
+    background: #1ed760;
+}
+.xbox .btn-volver:hover, .xbox-series-x .btn-volver:hover {
+    background: #159e4a;
+}
+
+/* === Nintendo Switch === */
+.nintendo-switch {
+    background: linear-gradient(180deg, #e60012, #b3000d);
+    color: #fff;
+}
+.nintendo-switch .btn-volver {
+    background: #ff4d4d;
+}
+.nintendo-switch .btn-volver:hover {
+    background: #cc0000;
+}
+
+/* === PC === */
+.pc {
+    background: linear-gradient(180deg, #2c2c2c, #1a1a1a);
+}
+.pc .btn-volver {
+    background: #00b4d8;
+}
+.pc .btn-volver:hover {
+    background: #0077b6;
+}
+
+/* ==== Botón de detalles (mejorado) ==== */
+.btn-ver-destacado {
+    display: inline-block;
+    background-color: #00b4d8;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.6em 1.2em;
+    border-radius: 6px;
+    margin-top: 0.8em;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.btn-ver-destacado:hover {
+    background-color: #0096c7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+/* ==== BOTONES DETALLE VIDEOJUEGO ==== */
+.detalle-botones {
+    margin-top: 2em;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.btn-volver,
+.btn-inicio {
+    display: inline-block;
+    padding: 0.6em 1.2em;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    min-width: 130px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.25s ease-in-out;
+    line-height: 1.2;
+}
+
+/* Botón Volver */
+.btn-volver {
+    background-color: #00b4d8;
+}
+
+.btn-volver:hover {
+    background-color: #0077b6;
+    transform: translateY(-2px);
+}
+
+/* Botón Inicio */
+.btn-inicio {
+    background-color: #1e1e2f;
+}
+
+.btn-inicio:hover {
+    background-color: #2a2a40;
+    transform: translateY(-2px);
+}
+
+/* ==== DETALLE DE PLATAFORMA ==== */
+.detalle-plataforma {
+    padding: 2em 1em;
+    text-align: center;
+}
+
+.plataforma-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    margin-bottom: 2em;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 1.5em;
+}
+
+.plataforma-imagen img {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    background: white;
+}
+
+.plataforma-info {
+    max-width: 500px;
+    text-align: left;
+}
+
+.titulo-videojuegos {
+    margin-top: 2em;
+    color: #2b2d42;
+}
+
+/* ==== TARJETAS DE JUEGOS ==== */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.card h4 {
+    margin: 0.8em 0;
+    color: #1e1e2f;
+}
+
+/* ==== BOTONES ==== */
+.btn-detalle {
+    display: inline-block;
+    background: #00b4d8;
+    color: white;
+    padding: 0.5em 1.2em;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-detalle:hover {
+    background: #0077b6;
+    transform: translateY(-2px);
+}
+
+.btn-volver {
+    display: inline-block;
+    background: #1e1e2f;
+    color: white;
+    padding: 0.6em 1.2em;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 2em;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    background: #2b2b3d;
+    transform: translateY(-2px);
+}
+
+.volver-container {
+    text-align: center;
+    margin-top: 2em;
+}
+/* ===== Fondos suaves según la plataforma ===== */
+.detalle-plataforma {
+    color: #222 !important;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+/* PlayStation 5 */
+.detalle-plataforma.playstation-5 {
+    background: linear-gradient(135deg, rgba(0,70,150,0.15), rgba(0,100,255,0.05)) !important;
+}
+
+/* Xbox Series X */
+.detalle-plataforma.xbox-series-x {
+    background: linear-gradient(135deg, rgba(0,120,0,0.18), rgba(60,200,60,0.06)) !important;
+}
+
+/* Nintendo Switch */
+.detalle-plataforma.nintendo-switch {
+    background: linear-gradient(135deg, rgba(255,0,0,0.18), rgba(255,120,120,0.06)) !important;
+}
+
+/* PC */
+.detalle-plataforma.pc {
+    background: linear-gradient(135deg, rgba(80,80,80,0.15), rgba(180,180,180,0.05)) !important;
 }

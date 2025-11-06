@@ -4,24 +4,33 @@
 {% block titulo %}Videojuegos - Videomaníacos{% endblock %}
 
 {% block contenido %}
-<h2>Lista de Videojuegos</h2>
+<section class="videojuegos-section">
+    <h2>Lista de Videojuegos</h2>
 
-{% if videojuegos %}
-<div class="grid-videojuegos">
-    {% for v in videojuegos %}
-    <div class="card-videojuego">
-        <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.nombre }}" class="img-videojuego">
-        <h3><a href="{% url 'detalle_videojuego' v.id %}">{{ v.nombre }}</a></h3>
-        <p><strong>Género:</strong> {{ v.genero.nombre }}</p>
-        <p><strong>Plataformas:</strong> 
-            {% for p in v.plataformas.all %}
-                {{ p.nombre }}{% if not forloop.last %}, {% endif %}
-            {% endfor %}
-        </p>
+    {% if videojuegos %}
+    <div class="videojuegos-grid">
+        {% for v in videojuegos %}
+        <article class="videojuego-card">
+            <div class="videojuego-img-container">
+                <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.nombre }}" class="videojuego-img">
+            </div>
+            <div class="videojuego-info">
+                <h3 class="videojuego-title">
+                    <a href="{% url 'detalle_videojuego' v.id %}">{{ v.nombre }}</a>
+                </h3>
+                <p class="videojuego-genero"><strong>Género:</strong> {{ v.genero.nombre }}</p>
+                <p class="videojuego-plataformas"><strong>Plataformas:</strong> 
+                    {% for p in v.plataformas.all %}
+                        {{ p.nombre }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                <a href="{% url 'detalle_videojuego' v.id %}" class="btn-ver-mas">Ver detalles</a>
+            </div>
+        </article>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-{% else %}
-<p>No hay videojuegos registrados.</p>
-{% endif %}
+    {% else %}
+    <p class="mensaje-vacio">No hay videojuegos registrados todavía. 🚧</p>
+    {% endif %}
+</section>
 {% endblock %}

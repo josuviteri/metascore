@@ -4,15 +4,26 @@
 {% block titulo %}Plataformas - Videomaníacos{% endblock %}
 
 {% block contenido %}
-<h2>Plataformas</h2>
+<section class="plataformas-section">
+    <div class="header-plataformas">
+        <h2>Plataformas</h2>
+        <p class="subtitulo-plataformas">Explora tus plataformas favoritas</p>
+    </div>
 
-{% if plataformas %}
-<ul class="lista-plataformas">
-    {% for p in plataformas %}
-    <li><a href="{% url 'detalle_plataforma' p.id %}">{{ p.nombre }}</a></li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No hay plataformas registradas.</p>
-{% endif %}
+    {% if plataformas %}
+    <div class="grid-plataformas">
+        {% for p in plataformas %}
+        <div class="card-plataforma {{ p.nombre|lower|slugify }}">
+            <div class="plataforma-icono">
+                <img src="{% static 'img/plataformas/'|add:p.nombre|add:'.png' %}" alt="{{ p.nombre }}">
+            </div>
+            <h3 class="nombre-plataforma">{{ p.nombre }}</h3>
+            <a href="{% url 'detalle_plataforma' p.id %}" class="btn-ver">Ver detalles</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="sin-plataformas">No hay plataformas registradas.</p>
+    {% endif %}
+</section>
 {% endblock %}
