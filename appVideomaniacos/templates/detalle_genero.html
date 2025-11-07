@@ -16,14 +16,16 @@
         <article class="card-genero-juego">
             <div class="imagen-juego">
                 {% if juego.imagen %}
-                    <img src="{% static 'images/' %}{{ juego.imagen }}" alt="Imagen de {{ juego.nombre }}">
+                    <img src="{% static 'images/' %}{{ juego.imagen }}" alt="Imagen de {{ juego.titulo }}">
                 {% else %}
                     <img src="{% static 'images/no-image.png' %}" alt="Sin imagen disponible">
                 {% endif %}
             </div>
 
             <div class="contenido-juego">
-                <h3>{{ juego.nombre }}</h3>
+                <h3 class="videojuego-title">
+                    <a href="{% url 'detalle_videojuego' juego.id %}">{{ juego.titulo }}</a>
+                </h3>
                 <p class="descripcion">{{ juego.descripcion|truncatewords:20 }}</p>
                 <p class="plataformas"><strong>Plataformas:</strong>
                     {% for p in juego.plataformas.all %}

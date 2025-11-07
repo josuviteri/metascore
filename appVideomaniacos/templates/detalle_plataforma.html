@@ -20,8 +20,8 @@
     <div class="grid">
         {% for v in videojuegos %}
         <article class="card">
-            <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.nombre }}">
-            <h4>{{ v.nombre }}</h4>
+            <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.titulo }}">
+            <h4>{{ v.titulo }}</h4>
             <a href="{% url 'detalle_videojuego' v.id %}" class="btn-detalle">Ver detalles</a>
         </article>
         {% endfor %}

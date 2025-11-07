@@ -12,11 +12,11 @@
         {% for v in videojuegos %}
         <article class="videojuego-card">
             <div class="videojuego-img-container">
-                <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.nombre }}" class="videojuego-img">
+                <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.titulo }}" class="videojuego-img">
             </div>
             <div class="videojuego-info">
                 <h3 class="videojuego-title">
-                    <a href="{% url 'detalle_videojuego' v.id %}">{{ v.nombre }}</a>
+                    <a href="{% url 'detalle_videojuego' v.id %}">{{ v.titulo }}</a>
                 </h3>
                 <p class="videojuego-genero"><strong>Género:</strong> {{ v.genero.nombre }}</p>
                 <p class="videojuego-plataformas"><strong>Plataformas:</strong> 

@@ -10,11 +10,11 @@
         {% for genero, videojuego in videojuegos_por_genero.items %}
             {% if videojuego %}
             <article class="card">
-                <h3>{{ genero.nombre }}</h3>
+                <h2>{{ genero.nombre }}</h2>
                 {% if videojuego.imagen %}
                     <img src="{% static 'images/' %}{{ videojuego.imagen }}" alt="Portada de {{ videojuego.titulo }}">
                 {% endif %}
-                <h4><a href="{% url 'detalle_videojuego' videojuego.id %}">{{ videojuego.titulo }}</a></h4>
+                <h3><a href="{% url 'detalle_videojuego' videojuego.id %}">{{ videojuego.titulo }}</a></h3>
                 <p>Lanzamiento: {{ videojuego.fecha_lanzamiento|date:"d/m/Y" }}</p>
             </article>
             {% endif %}
