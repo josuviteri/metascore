@@ -19,7 +19,7 @@ class Videojuego(models.Model):
     descripcion = models.TextField(blank=True, null=True)
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE)
     plataformas = models.ManyToManyField(Plataforma)
-    imagen = models.CharField(max_length=255, blank=True, null=True)  # <<-- cambio
+    imagen = models.CharField(max_length=255, blank=True, null=True)
     fecha_lanzamiento = models.DateField(blank=True, null=True)
     score = models.FloatField(blank=True, null=True)
 

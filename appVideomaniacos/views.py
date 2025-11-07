@@ -1,4 +1,3 @@
-# appVideomaniacos/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.db import transaction
@@ -6,12 +5,7 @@ from django.conf import settings
 from .models import Genero, Plataforma, Videojuego
 import os, re
 
-# ---------- Helper: guardar archivo en static/images y devolver el nombre ----------
 def _guardar_en_static_images(archivo):
-    """
-    Copia el archivo subido a <BASE_DIR>/appVideomaniacos/static/images
-    y retorna el nombre final (basename) para guardar en DB.
-    """
     base_dir = getattr(settings, 'BASE_DIR', os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     dest_dir = os.path.join(base_dir, 'appVideomaniacos', 'static', 'images')
     os.makedirs(dest_dir, exist_ok=True)
@@ -34,7 +28,6 @@ def _guardar_en_static_images(archivo):
 
     return final_name
 
-# ---------- Vistas públicas ----------
 def index(request):
     generos = Genero.objects.all()
     videojuegos_por_genero = {}
@@ -74,7 +67,6 @@ def formulario(request):
     plataformas = Plataforma.objects.all().order_by('nombre')
     return render(request, 'formulario.html', {'generos': generos, 'plataformas': plataformas})
 
-# ---------- Crear videojuego ----------
 @transaction.atomic
 def sugerir_videojuego(request):
     if request.method != 'POST':
@@ -90,14 +82,13 @@ def sugerir_videojuego(request):
     imagen_archivo = request.FILES.get('imagen')
     imagen_nombre_input = (request.POST.get('imagen_nombre') or '').strip()
 
-    # Validación mínima
     if not titulo or not genero_id or not plataformas_ids or not fecha_lanzamiento or score is None:
         messages.error(request, 'Completa todos los campos obligatorios.')
         return redirect('formulario')
 
     genero = get_object_or_404(Genero, pk=genero_id)
 
-    # Resolver imagen: si se sube archivo, lo copiamos a static/images; si no, usamos el nombre
+    # si se sube archivo, lo copiamos a static/images; si no, usamos el nombre
     if imagen_archivo:
         imagen_final = _guardar_en_static_images(imagen_archivo)
     elif imagen_nombre_input:
