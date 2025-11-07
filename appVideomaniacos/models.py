@@ -15,12 +15,12 @@ class Plataforma(models.Model):
 
 
 class Videojuego(models.Model):
-    titulo = models.CharField(max_length=200)  # 👈 cambio de 'nombre' a 'titulo'
+    titulo = models.CharField(max_length=200)
     descripcion = models.TextField(blank=True, null=True)
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE)
     plataformas = models.ManyToManyField(Plataforma)
-    imagen = models.ImageField(upload_to='videojuegos/', blank=True, null=True)
-    fecha_lanzamiento = models.DateField(blank=True, null=True)  # 👈 nuevo campo
+    imagen = models.CharField(max_length=255, blank=True, null=True)  # <<-- cambio
+    fecha_lanzamiento = models.DateField(blank=True, null=True)
     score = models.FloatField(blank=True, null=True)
 
     def __str__(self):
