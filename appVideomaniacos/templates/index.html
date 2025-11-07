@@ -14,7 +14,9 @@
                 {% if videojuego.imagen %}
                     <img src="{% static 'images/' %}{{ videojuego.imagen }}" alt="Portada de {{ videojuego.titulo }}">
                 {% endif %}
-                <h3><a href="{% url 'detalle_videojuego' videojuego.id %}">{{ videojuego.titulo }}</a></h3>
+                <h3 class="videojuego-title">
+                    <a href="{% url 'detalle_videojuego' videojuego.id %}">{{ videojuego.titulo }}</a>
+                </h3>
                 <p>Lanzamiento: {{ videojuego.fecha_lanzamiento|date:"d/m/Y" }}</p>
             </article>
             {% endif %}
