@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block titulo %}{{ videojuego.nombre }} - Videomaníacos{% endblock %}
+{% block titulo %}{{ videojuego.titulo }} - Videomaníacos{% endblock %}
 
 {% block contenido %}
 <section class="detalle-videojuego-section">
     <div class="detalle-card">
         <div class="detalle-img">
-            <img src="{% static 'images/' %}{{ videojuego.imagen }}" alt="{{ videojuego.nombre }}">
+            <img src="{% static 'images/' %}{{ videojuego.imagen }}" alt="{{ videojuego.titulo }}">
         </div>
 
         <div class="detalle-info">
-            <h2 class="detalle-titulo">{{ videojuego.nombre }}</h2>
+            <h2 class="detalle-titulo">{{ videojuego.titulo }}</h2>
 
             <div class="detalle-descripcion-box">
                 <h4>Descripción</h4>
