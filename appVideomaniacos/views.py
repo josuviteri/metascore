@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404, redirec
 from django.contrib import messages
 from django.db import transaction
 from .models import Genero, Plataforma, Videojuego
-# Create your views here.
+
 
 def index(request):
     generos = Genero.objects.all()
@@ -45,9 +45,8 @@ def detalle_plataforma(request, plataforma_id):
     videojuegos = plataforma.videojuego_set.all()
     return render(request, 'detalle_plataforma.html', {'plataforma': plataforma, 'videojuegos': videojuegos})
 
-# --- NUEVO: mostrar formulario ---
+
 def formulario(request):
-    # GET: renderiza el formulario con datos para selects
     generos = Genero.objects.all().order_by('nombre')
     plataformas = Plataforma.objects.all().order_by('nombre')
     return render(request, 'formulario.html', {
@@ -55,7 +54,7 @@ def formulario(request):
         'plataformas': plataformas
     })
 
-# --- NUEVO: crear videojuego ---
+
 @transaction.atomic
 def sugerir_videojuego(request):
     if request.method != 'POST':
@@ -86,23 +85,17 @@ def sugerir_videojuego(request):
         titulo=titulo,
         genero=genero,
         descripcion=descripcion,
-        # Fecha: si tu modelo se llama fecha_lanzamiento o fechalanzamiento, ajusta este nombre:
-        fecha_lanzamiento=fecha_lanzamiento,  # ajusta si tu campo se llama distinto
+        fecha_lanzamiento=fecha_lanzamiento,  
         score=score
     )
 
-    # Manejo de imagen: prioriza archivo; si no hay, usa nombre textual si lo soporta tu modelo
+    # Manejo de imagen: prioriza archivo; si no hay, usa nombre textual
     if imagen_archivo:
-        # Si tu modelo tiene ImageField/FileField llamado 'imagen', esto funciona:
         v.imagen = imagen_archivo
     elif imagen_nombre:
-        # Si guardas solo el nombre/ruta (CharField) en el campo 'imagen', esto funciona;
-        # si es ImageField con storage, deberías subir archivo en lugar de nombre.
         v.imagen = imagen_nombre
 
     v.save()
-
-    # ManyToMany plataformas
     v.plataformas.set(plataformas_ids)
 
     messages.success(request, 'Videojuego creado correctamente.')
