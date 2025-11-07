@@ -88,13 +88,10 @@ def sugerir_videojuego(request):
 
     genero = get_object_or_404(Genero, pk=genero_id)
 
-    # si se sube archivo, lo copiamos a static/images; si no, usamos el nombre
     if imagen_archivo:
         imagen_final = _guardar_en_static_images(imagen_archivo)
-    elif imagen_nombre_input:
-        imagen_final = os.path.basename(imagen_nombre_input)
     else:
-        imagen_final = 'placeholder.png'
+        imagen_final = 'elden_ring.png'
 
     v = Videojuego(
         titulo=titulo,
