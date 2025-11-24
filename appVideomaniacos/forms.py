@@ -1,5 +1,5 @@
 from django import forms
-from .models import Videojuego
+from .models import Videojuego, Contacto
 
 class VideojuegoForm(forms.ModelForm):
     class Meta:
@@ -19,3 +19,9 @@ class VideojuegoForm(forms.ModelForm):
         labels = {
             'fecha_lanzamiento': 'Fecha de lanzamiento',
         }
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contacto
+        fields = ['nombre', 'email', 'mensaje']

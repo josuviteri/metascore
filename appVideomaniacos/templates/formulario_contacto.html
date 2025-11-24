@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Contáctanos - MetaScore{% endblock %}
+
+{% block contenido %}
+<section class="form-section">
+    <h2>Contáctanos</h2>
+
+    <form method="post" class="form-card">
+        {% csrf_token %}
+
+        <div class="form-grid">
+            {% for field in form %}
+            <div class="form-field">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+
+                {% if field.help_text %}
+                    <small>{{ field.help_text }}</small>
+                {% endif %}
+
+                {% for error in field.errors %}
+                    <div class="error-text" style="color: red; font-size: 0.8em;">{{ error }}</div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primario">Enviar</button>
+            <a href="{% url 'index' %}" class="btn-secundario">Cancelar</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (
     IndexView, VideojuegoListView, VideojuegoDetailView,
     GeneroListView, GeneroDetailView, PlataformaListView,
-    PlataformaDetailView, VideojuegoCreateView
+    PlataformaDetailView, VideojuegoCreateView, ContactoView
 )
 
 urlpatterns = [
@@ -20,4 +20,8 @@ urlpatterns = [
     path('plataformas/<int:pk>/', PlataformaDetailView.as_view(), name='detalle_plataforma'),
     
     path("formulario/", VideojuegoCreateView.as_view(), name="formulario"),
+
+    path("formulario_contacto/", ContactoView.as_view(), name="formulario_contacto"),
+
+
 ]

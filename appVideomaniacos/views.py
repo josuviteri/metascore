@@ -1,7 +1,14 @@
+from pyexpat.errors import messages
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from django.urls import reverse_lazy
-from .models import Videojuego, Genero, Plataforma
-from .forms import VideojuegoForm
+from .models import Videojuego, Genero, Plataforma, Contacto
+from .forms import ContactForm, VideojuegoForm
+
+
+from django.contrib import messages
+
+
+
 
 # 1. Vista de Inicio (Home)
 class IndexView(TemplateView):
@@ -69,3 +76,13 @@ class VideojuegoCreateView(CreateView):
     form_class = VideojuegoForm
     template_name = 'formulario.html'
     success_url = reverse_lazy('videojuegos') # Redirige aquí al terminar
+
+class ContactoView(CreateView):
+    model = Contacto
+    form_class = ContactForm
+    template_name = "formulario_contacto.html"
+    success_url = reverse_lazy('formulario_contacto')
+
+    def form_valid(self, form):
+        messages.success(self.request, "Tu mensaje ha sido enviado y guardado correctamente.")
+        return super().form_valid(form)
