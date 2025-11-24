@@ -1,3 +1,4 @@
 appVideomaniacos/__pycache__/
 appVideomaniacos/migrations/__pycache__/
 videomaniacos/__pycache__/
+.env
