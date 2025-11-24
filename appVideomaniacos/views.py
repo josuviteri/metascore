@@ -1,108 +1,71 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib import messages
-from django.db import transaction
-from django.conf import settings
-from .models import Genero, Plataforma, Videojuego
-import os, re
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.urls import reverse_lazy
+from .models import Videojuego, Genero, Plataforma
+from .forms import VideojuegoForm
 
-def _guardar_en_static_images(archivo):
-    base_dir = getattr(settings, 'BASE_DIR', os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    dest_dir = os.path.join(base_dir, 'appVideomaniacos', 'static', 'images')
-    os.makedirs(dest_dir, exist_ok=True)
+# 1. Vista de Inicio (Home)
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
-    nombre = os.path.basename(getattr(archivo, 'name', 'imagen.png'))
-    nombre = re.sub(r'\s+', '_', nombre)
-    nombre = re.sub(r'[^A-Za-z0-9._-]+', '', nombre)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Mantenemos tu lógica original: mostrar el último juego de cada género
+        videojuegos_por_genero = {}
+        for genero in Genero.objects.all():
+            juego = Videojuego.objects.filter(genero=genero).order_by('-fecha_lanzamiento').first()
+            if juego:
+                videojuegos_por_genero[genero] = juego
+        
+        context['videojuegos_por_genero'] = videojuegos_por_genero
+        return context
 
-    nombre_sin_ext, ext = os.path.splitext(nombre)
-    final_name = nombre
-    i = 1
-    while os.path.exists(os.path.join(dest_dir, final_name)):
-        final_name = f"{nombre_sin_ext}_{i}{ext}"
-        i += 1
+# 2. Listados (Videojuegos, Géneros, Plataformas)
+class VideojuegoListView(ListView):
+    model = Videojuego
+    template_name = 'videojuegos.html'
+    context_object_name = 'videojuegos' # Así lo llamas en el HTML: {% for v in videojuegos %}
 
-    dest_path = os.path.join(dest_dir, final_name)
-    with open(dest_path, 'wb+') as destino:
-        for chunk in archivo.chunks():
-            destino.write(chunk)
+class GeneroListView(ListView):
+    model = Genero
+    template_name = 'generos.html'
+    context_object_name = 'generos'
 
-    return final_name
+class PlataformaListView(ListView):
+    model = Plataforma
+    template_name = 'plataformas.html'
+    context_object_name = 'plataformas'
 
-def index(request):
-    generos = Genero.objects.all()
-    videojuegos_por_genero = {}
-    for genero in generos:
-        videojuego = Videojuego.objects.filter(genero=genero).order_by('-fecha_lanzamiento').first()
-        videojuegos_por_genero[genero] = videojuego
-    return render(request, 'index.html', {'videojuegos_por_genero': videojuegos_por_genero})
+# 3. Detalles (Ver un juego, ver un género, ver una plataforma)
+class VideojuegoDetailView(DetailView):
+    model = Videojuego
+    template_name = 'detalle_videojuego.html'
+    context_object_name = 'videojuego'
 
-def lista_videojuegos(request):
-    videojuegos = Videojuego.objects.all()
-    return render(request, 'videojuegos.html', {'videojuegos': videojuegos})
+class GeneroDetailView(DetailView):
+    model = Genero
+    template_name = 'detalle_genero.html'
+    context_object_name = 'genero'
 
-def detalle_videojuego(request, videojuego_id):
-    videojuego = get_object_or_404(Videojuego, pk=videojuego_id)
-    return render(request, 'detalle_videojuego.html', {'videojuego': videojuego})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Pasamos los juegos de este género a la plantilla
+        context['videojuegos'] = self.object.videojuego_set.all()
+        return context
 
-def lista_generos(request):
-    generos = Genero.objects.all()
-    return render(request, 'generos.html', {'generos': generos})
+class PlataformaDetailView(DetailView):
+    model = Plataforma
+    template_name = 'detalle_plataforma.html'
+    context_object_name = 'plataforma'
 
-def detalle_genero(request, genero_id):
-    genero = get_object_or_404(Genero, pk=genero_id)
-    videojuegos = Videojuego.objects.filter(genero=genero)
-    return render(request, 'detalle_genero.html', {'genero': genero, 'videojuegos': videojuegos})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Pasamos los juegos de esta plataforma a la plantilla
+        context['videojuegos'] = self.object.videojuego_set.all()
+        return context
 
-def lista_plataformas(request):
-    plataformas = Plataforma.objects.all()
-    return render(request, 'plataformas.html', {'plataformas': plataformas})
-
-def detalle_plataforma(request, plataforma_id):
-    plataforma = get_object_or_404(Plataforma, pk=plataforma_id)
-    videojuegos = plataforma.videojuego_set.all()
-    return render(request, 'detalle_plataforma.html', {'plataforma': plataforma, 'videojuegos': videojuegos})
-
-def formulario(request):
-    generos = Genero.objects.all().order_by('nombre')
-    plataformas = Plataforma.objects.all().order_by('nombre')
-    return render(request, 'formulario.html', {'generos': generos, 'plataformas': plataformas})
-
-@transaction.atomic
-def sugerir_videojuego(request):
-    if request.method != 'POST':
-        return redirect('formulario')
-
-    titulo = request.POST.get('titulo', '').strip()
-    genero_id = request.POST.get('genero_id')
-    plataformas_ids = request.POST.getlist('plataformas_ids')
-    fecha_lanzamiento = request.POST.get('fechalanzamiento')
-    score = request.POST.get('score')
-    descripcion = request.POST.get('descripcion', '').strip()
-
-    imagen_archivo = request.FILES.get('imagen')
-    imagen_nombre_input = (request.POST.get('imagen_nombre') or '').strip()
-
-    if not titulo or not genero_id or not plataformas_ids or not fecha_lanzamiento or score is None:
-        messages.error(request, 'Completa todos los campos obligatorios.')
-        return redirect('formulario')
-
-    genero = get_object_or_404(Genero, pk=genero_id)
-
-    if imagen_archivo:
-        imagen_final = _guardar_en_static_images(imagen_archivo)
-    else:
-        imagen_final = 'elden_ring.png'
-
-    v = Videojuego(
-        titulo=titulo,
-        genero=genero,
-        descripcion=descripcion,
-        fecha_lanzamiento=fecha_lanzamiento,
-        score=score,
-        imagen=imagen_final,   # solo el nombre en DB
-    )
-    v.save()
-    v.plataformas.set(plataformas_ids)
-
-    messages.success(request, 'Videojuego creado correctamente.')
-    return redirect('detalle_videojuego', videojuego_id=v.id)
+# 4. Formulario de Creación (Sustituye a tu antigua función 'sugerir_videojuego')
+class VideojuegoCreateView(CreateView):
+    model = Videojuego
+    form_class = VideojuegoForm
+    template_name = 'formulario.html'
+    success_url = reverse_lazy('videojuegos') # Redirige aquí al terminar
