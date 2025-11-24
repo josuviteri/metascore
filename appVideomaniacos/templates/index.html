@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block titulo %}Inicio - MetaScore{% endblock %}
+{% load i18n %} {% block titulo %}{% trans "Inicio" %} - MetaScore{% endblock %}
 
 {% block contenido %}
 <section>
-    <h2>Últimos videojuegos por género</h2>
+    <h2>{% trans "Últimos videojuegos por género" %}</h2>
     <div class="grid">
         {% for genero, videojuego in videojuegos_por_genero.items %}
             {% if videojuego %}
@@ -17,7 +16,7 @@
                 <h3 class="videojuego-title">
                     <a href="{% url 'detalle_videojuego' videojuego.id %}">{{ videojuego.titulo }}</a>
                 </h3>
-                <p>Lanzamiento: {{ videojuego.fecha_lanzamiento|date:"d/m/Y" }}</p>
+                <p>{% trans "Lanzamiento" %}: {{ videojuego.fecha_lanzamiento|date:"d/m/Y" }}</p>
             </article>
             {% endif %}
         {% endfor %}

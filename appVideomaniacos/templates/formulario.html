@@ -1,106 +1,36 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sugerir videojuego - MetaScore</title>
-    <link rel="stylesheet" href="/static/css/estilos.css">
-    <link rel="icon" type="image/png" href="/static/images/favicon.png">
-</head>
-<body>
-    <header>
-        <h1>MetaScore</h1>
-        <nav>
-            <a href="/">Inicio</a> |
-            <a href="/videojuegos/">Videojuegos</a> |
-            <a href="/generos/">Géneros</a> |
-            <a href="/plataformas/">Plataformas</a> |
-            <a href="/formulario/">Sugerir juego</a>
-        </nav>
-    </header>
+{% extends "base.html" %}
+{% load static %}
 
-    <main>
-        <section class="form-section">
-            <h2>Nuevo videojuego</h2>
+{% block titulo %}Sugerir videojuego - MetaScore{% endblock %}
 
-            <form action="/videojuegos/crear/" method="post" enctype="multipart/form-data" class="form-card">
-                <input type="hidden" name="csrfmiddlewaretoken" value="zs2YdHQdfZsoEkfxv2zREDltoeJ8SfeujyBfXfkJmmiVBz4XcU2f3CYC5OGDWW6I">
+{% block contenido %}
+<section class="form-section">
+    <h2>Nuevo videojuego</h2>
 
-                <div class="form-grid">
-                    <div class="form-field">
-                        <label for="titulo">Título</label>
-                        <input type="text" id="titulo" name="titulo" placeholder="Ej. Hollow Knight" required>
-                    </div>
+    <form method="post" enctype="multipart/form-data" class="form-card">
+        {% csrf_token %}
 
-                    <div class="form-field">
-                        <label for="genero">Género</label>
-                        <select id="genero" name="genero_id" required>
-                            <option value="" disabled selected>-- Selecciona un género --</option>
-                            <option value="1">Acción</option>
-                            <option value="2">Aventura</option>
-                            <option value="4">Deportes</option>
-                            <option value="11">Estrategia</option>
-                            <option value="12">Horror</option>
-                            <option value="5">Mundo Abierto</option>
-                            <option value="10">Plataformas</option>
-                            <option value="7">Puzzle</option>
-                            <option value="3">RPG</option>
-                            <option value="6">Roguelike</option>
-                            <option value="9">Shooter</option>
-                            <option value="8">Simulación</option>
-                        </select>
-                    </div>
+        <div class="form-grid">
+            {% for field in form %}
+            <div class="form-field {% if field.name == 'descripcion' %}form-field-full{% endif %}">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                
+                {% if field.help_text %}
+                    <small>{{ field.help_text }}</small>
+                {% endif %}
+                
+                {% for error in field.errors %}
+                    <div class="error-text" style="color: red; font-size: 0.8em;">{{ error }}</div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
 
-                    <div class="form-field">
-                        <label for="plataformas">Plataformas</label>
-                        <select id="plataformas" name="plataformas_ids" multiple size="5" required>
-                            <option value="" disabled>-- Selecciona una o más plataformas --</option>
-                            <option value="3">Nintendo Switch</option>
-                            <option value="4">PC</option>
-                            <option value="1">PlayStation 5</option>
-                            <option value="2">Xbox Series X</option>
-                        </select>
-                        <small>Usa Ctrl para seleccionar varias.</small>
-                    </div>
-
-                    <div class="form-field">
-                        <label for="fecha">Fecha de lanzamiento</label>
-                        <input type="date" id="fecha" name="fechalanzamiento" required>
-                    </div>
-
-                    <div class="form-field">
-                        <label for="score">Score</label>
-                        <input type="number" id="score" name="score" min="0" max="100" step="1" placeholder="0-100" required>
-                    </div>
-
-                    <div class="form-field">
-                        <label for="imagen">Imagen (archivo)</label>
-                        <input type="file" id="imagen" name="imagen" accept="image/*">
-                    </div>
-
-                    <div class="form-field form-field-full">
-                        <label for="descripcion">Descripción</label>
-                        <textarea id="descripcion" name="descripcion" rows="6" placeholder="Resumen del videojuego..." required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn-primario">Guardar</button>
-                    <a href="/videojuegos/" class="btn-secundario">Cancelar</a>
-                </div>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 MetaScore — IW-BI-10 - Todos los derechos reservados</p>
-        <p>
-            <a href="https://jigsaw.w3.org/css-validator/">
-                <img style="border:0;width:88px;height:31px"
-                    src="https://jigsaw.w3.org/css-validator/images/vcss"
-                    alt="¡CSS Válido!">
-            </a>
-        </p>
-    </footer>
-</body>
-</html>
+        <div class="form-actions">
+            <button type="submit" class="btn-primario">Guardar</button>
+            <a href="{% url 'videojuegos' %}" class="btn-secundario">Cancelar</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block titulo %}{{ videojuego.titulo }} - MetaScore{% endblock %}
+{% load i18n %} {% block titulo %}{{ videojuego.titulo }} - MetaScore{% endblock %}
 
 {% block contenido %}
 <section class="detalle-videojuego-section">
@@ -14,23 +13,23 @@
             <h2 class="detalle-titulo">{{ videojuego.titulo }}</h2>
 
             <div class="detalle-descripcion-box">
-                <h4>Descripción</h4>
+                <h4>{% trans "Descripción" %}</h4>
                 <p>{{ videojuego.descripcion }}</p>
             </div>
 
-            <p><strong>Género:</strong>
+            <p><strong>{% trans "Género" %}:</strong>
                 <a href="{% url 'detalle_genero' videojuego.genero.id %}" class="link-genero">
                     {{ videojuego.genero.nombre }}
                 </a>
             </p>
 
-            <p><strong>Plataformas:</strong>
+            <p><strong>{% trans "Plataformas" %}:</strong>
                 {% for p in videojuego.plataformas.all %}
                     <a href="{% url 'detalle_plataforma' p.id %}" class="link-plataforma">{{ p.nombre }}</a>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
             </p>
 
-            <p><strong>Fecha de Lanzamiento:</strong>
+            <p><strong>{% trans "Fecha de Lanzamiento" %}:</strong>
                 {{ videojuego.fecha_lanzamiento }}
             </p>
 
@@ -39,8 +38,7 @@
             </p>
 
             <div class="detalle-botones">
-                <a href="{% url 'videojuegos' %}" class="btn-volver">← Volver</a>
-                <a href="{% url 'index' %}" class="btn-inicio">Inicio</a>
+                <a href="{% url 'videojuegos' %}" class="btn-volver">← {% trans "Volver" %}</a>
             </div>
         </div>
     </div>

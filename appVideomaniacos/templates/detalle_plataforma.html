@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block titulo %}{{ plataforma.nombre }} - MetaScore{% endblock %}
+{% load i18n %} {% block titulo %}{{ plataforma.nombre }} - MetaScore{% endblock %}
 
 {% block contenido %}
 <section class="detalle-plataforma {{ plataforma.nombre|lower|slugify }}">
@@ -11,27 +10,27 @@
         </div>
         <div class="plataforma-info">
             <h2>{{ plataforma.nombre }}</h2>
-            <p>Explora los videojuegos disponibles en esta plataforma y descubre lo mejor que tiene para ofrecer.</p>
+            <p>{% trans "Explora los videojuegos disponibles en esta plataforma y descubre lo mejor que tiene para ofrecer." %}</p>
         </div>
     </div>
 
     {% if videojuegos %}
-    <h3 class="titulo-videojuegos">Videojuegos disponibles</h3>
+    <h3 class="titulo-videojuegos">{% trans "Videojuegos disponibles" %}</h3>
     <div class="grid">
         {% for v in videojuegos %}
         <article class="card">
             <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.titulo }}">
             <h4>{{ v.titulo }}</h4>
-            <a href="{% url 'detalle_videojuego' v.id %}" class="btn-detalle">Ver detalles</a>
+            <a href="{% url 'detalle_videojuego' v.id %}" class="btn-detalle">{% trans "Ver detalles" %}</a>
         </article>
         {% endfor %}
     </div>
     {% else %}
-    <p class="sin-juegos">No hay videojuegos registrados en esta plataforma.</p>
+    <p class="sin-juegos">{% trans "No hay videojuegos registrados en esta plataforma." %}</p>
     {% endif %}
 
-    <div class="volver-container">
-        <a href="{% url 'plataformas' %}" class="btn-volver">← Volver a plataformas</a>
+    <div class="volver-container" style="margin-top: 20px;">
+        <a href="{% url 'plataformas' %}" class="btn-secundario">← {% trans "Volver" %}</a>
     </div>
 </section>
 {% endblock %}

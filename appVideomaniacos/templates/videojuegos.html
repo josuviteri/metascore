@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block titulo %}Videojuegos - MetaScore{% endblock %}
+{% load i18n %} {% block titulo %}{% trans "Videojuegos" %} - MetaScore{% endblock %}
 
 {% block contenido %}
 <section class="videojuegos-section">
-    <h2>Lista de Videojuegos</h2>
+    <h2>{% trans "Lista de Videojuegos" %}</h2>
 
     {% if videojuegos %}
     <div class="videojuegos-grid">
@@ -18,19 +17,19 @@
                 <h3 class="videojuego-title">
                     <a href="{% url 'detalle_videojuego' v.id %}">{{ v.titulo }}</a>
                 </h3>
-                <p class="videojuego-genero"><strong>Género:</strong> {{ v.genero.nombre }}</p>
-                <p class="videojuego-plataformas"><strong>Plataformas:</strong> 
+                <p class="videojuego-genero"><strong>{% trans "Género" %}:</strong> {{ v.genero.nombre }}</p>
+                <p class="videojuego-plataformas"><strong>{% trans "Plataformas" %}:</strong> 
                     {% for p in v.plataformas.all %}
                         {{ p.nombre }}{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </p>
-                <a href="{% url 'detalle_videojuego' v.id %}" class="btn-ver-mas">Ver detalles</a>
+                <a href="{% url 'detalle_videojuego' v.id %}" class="btn-ver-mas">{% trans "Ver detalles" %}</a>
             </div>
         </article>
         {% endfor %}
     </div>
     {% else %}
-    <p class="mensaje-vacio">No hay videojuegos registrados todavía. 🚧</p>
+    <p class="mensaje-vacio">{% trans "No hay videojuegos disponibles." %}</p>
     {% endif %}
 </section>
 {% endblock %}

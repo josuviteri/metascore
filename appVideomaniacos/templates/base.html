@@ -1,23 +1,45 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    {% load static %}
+{% load static %}
+{% load i18n %} <html lang="{{ LANGUAGE_CODE }}"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block titulo %}MetaScore{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
-
+    
+    <style>
+        .lang-switch { position: absolute; top: 20px; right: 20px; }
+        .lang-btn { background: none; border: 1px solid #fff; color: #fff; padding: 5px; cursor: pointer; font-size: 0.8em; }
+        .lang-btn:hover { background: rgba(255,255,255,0.2); }
+    </style>
 </head>
 <body>
     <header>
         <h1>MetaScore</h1>
+        
+        <div class="lang-switch">
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                <select name="language" onchange="this.form.submit()" style="padding: 5px; border-radius: 5px;">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+
         <nav>
-            <a href="{% url 'index' %}">Inicio</a> |
-            <a href="{% url 'videojuegos' %}">Videojuegos</a> |
-            <a href="{% url 'generos' %}">Géneros</a> |
-            <a href="{% url 'plataformas' %}">Plataformas</a> |
-            <a href="{% url 'formulario' %}">Sugerir juego</a>
+            <a href="{% url 'index' %}">{% trans "Inicio" %}</a> |
+            <a href="{% url 'videojuegos' %}">{% trans "Videojuegos" %}</a> |
+            <a href="{% url 'generos' %}">{% trans "Géneros" %}</a> |
+            <a href="{% url 'plataformas' %}">{% trans "Plataformas" %}</a> |
+            <a href="{% url 'formulario' %}">{% trans "Sugerir juego" %}</a>
         </nav>
     </header>
 
@@ -26,14 +48,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 MetaScore — IW-BI-10 - Todos los derechos reservados</p>
-        <p>
-        <a href="https://jigsaw.w3.org/css-validator/">
-        <img style="border:0;width:88px;height:31px"
-            src="https://jigsaw.w3.org/css-validator/images/vcss"
-            alt="¡CSS Válido!">
-        </a>
-        </p>
+        <p>&copy; 2025 MetaScore — IW-BI-10 - {% trans "Todos los derechos reservados" %}</p>
     </footer>
 </body>
 </html>

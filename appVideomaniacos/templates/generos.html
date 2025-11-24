@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block titulo %}Géneros - MetaScore{% endblock %}
+{% load i18n %} {% block titulo %}{% trans "Géneros" %} - MetaScore{% endblock %}
 
 {% block contenido %}
 <section class="generos-section">
-    <h2>Explora los Géneros de Videojuegos</h2>
-    <p class="intro-generos">Descubre los diferentes estilos de videojuegos disponibles. Cada género tiene su propia esencia.</p>
+    <h2>{% trans "Explora los Géneros de Videojuegos" %}</h2>
+    <p class="intro-generos">{% trans "Descubre los diferentes estilos de videojuegos disponibles. Cada género tiene su propia esencia." %}</p>
 
     {% if generos %}
     <div class="grid-generos">
@@ -23,46 +22,48 @@
             {% elif g.nombre|lower == 'puzzle' %}genero-puzzle
             {% elif g.nombre|lower == 'plataformas' %}genero-plataformas
             {% elif g.nombre|lower == 'horror' %}genero-horror
-            {% elif g.nombre|lower == 'roguelike' %}genero-roguelike
-            {% else %}genero-default{% endif %}">
+            {% elif g.nombre|lower == 'lucha' %}genero-lucha
+            {% elif g.nombre|lower == 'carreras' %}genero-carreras
+            {% endif %}">
             
             <div class="icono-genero">
                 {% if g.nombre|lower == "acción" %}
-                    <img src="{% static 'images/icon_accion.png' %}" alt="Acción">
+                    <img src="{% static 'images/icon_accion.png' %}" alt="{% trans 'Acción' %}">
                 {% elif g.nombre|lower == "aventura" %}
-                    <img src="{% static 'images/icon_aventura.png' %}" alt="Aventura">
+                    <img src="{% static 'images/icon_aventura.png' %}" alt="{% trans 'Aventura' %}">
                 {% elif g.nombre|lower == "rpg" %}
-                    <img src="{% static 'images/icon_rpg.png' %}" alt="RPG">
+                    <img src="{% static 'images/icon_rpg.png' %}" alt="{% trans 'RPG' %}">
                 {% elif g.nombre|lower == "deportes" %}
-                    <img src="{% static 'images/icon_deportes.png' %}" alt="Deportes">
+                    <img src="{% static 'images/icon_deportes.png' %}" alt="{% trans 'Deportes' %}">
                 {% elif g.nombre|lower == "mundo abierto" %}
-                    <img src="{% static 'images/icon_mundoabierto.png' %}" alt="Mundo Abierto">
+                    <img src="{% static 'images/icon_mundoabierto.png' %}" alt="{% trans 'Mundo Abierto' %}">
                 {% elif g.nombre|lower == "roguelike" %}
-                    <img src="{% static 'images/icon_roguelike.png' %}" alt="Roguelike">
+                    <img src="{% static 'images/icon_roguelike.png' %}" alt="{% trans 'Roguelike' %}">
                 {% elif g.nombre|lower == "shooter" %}
-                    <img src="{% static 'images/icon_shooter.png' %}" alt="Shooter">
+                    <img src="{% static 'images/icon_shooter.png' %}" alt="{% trans 'Shooter' %}">
                 {% elif g.nombre|lower == "estrategia" %}
-                    <img src="{% static 'images/icon_estrategia.png' %}" alt="Estrategia">
+                    <img src="{% static 'images/icon_estrategia.png' %}" alt="{% trans 'Estrategia' %}">
                 {% elif g.nombre|lower == "simulación" %}
-                    <img src="{% static 'images/icon_simulacion.png' %}" alt="Simulación">
+                    <img src="{% static 'images/icon_simulacion.png' %}" alt="{% trans 'Simulación' %}">
                 {% elif g.nombre|lower == "puzzle" %}
-                    <img src="{% static 'images/icon_puzzle.png' %}" alt="Puzzle">
+                    <img src="{% static 'images/icon_puzzle.png' %}" alt="{% trans 'Puzzle' %}">
                 {% elif g.nombre|lower == "plataformas" %}
-                    <img src="{% static 'images/icon_plataformas.png' %}" alt="Plataformas">
+                    <img src="{% static 'images/icon_plataformas.png' %}" alt="{% trans 'Plataformas' %}">
                 {% elif g.nombre|lower == "horror" %}
-                    <img src="{% static 'images/icon_horror.png' %}" alt="Horror"> 
+                    <img src="{% static 'images/icon_horror.png' %}" alt="{% trans 'Horror' %}"> 
                 {% else %}
-                    <img src="{% static 'images/icon_genero.png' %}" alt="Género">
+                    <img src="{% static 'images/icon_genero.png' %}" alt="{% trans 'Género' %}">
                 {% endif %}
             </div>
 
-            <h3>{{ g.nombre }}</h3>
-            <a href="{% url 'detalle_genero' g.id %}" class="btn-ver-destacado">Ver juegos</a>
+            <h3>{% trans g.nombre %}</h3>
+            
+            <a href="{% url 'detalle_genero' g.id %}" class="btn-ver-destacado">{% trans "Ver juegos" %}</a>
         </div>
         {% endfor %}
     </div>
     {% else %}
-    <p>No hay géneros registrados.</p>
+    <p class="sin-generos">{% trans "No hay géneros registrados." %}</p>
     {% endif %}
 </section>
 {% endblock %}

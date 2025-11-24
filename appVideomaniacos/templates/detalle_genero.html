@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block titulo %}{{ genero.nombre }} - MetaScore{% endblock %}
+{% load i18n %} {% block titulo %}{{ genero.nombre }} - MetaScore{% endblock %}
 
 {% block contenido %}
 <section class="genero-detalle">
     <div class="header-genero">
         <h2>{{ genero.nombre }}</h2>
-        <p class="subtitulo-genero">Descubre todos los videojuegos de este género</p>
+        <p class="subtitulo-genero">{% trans "Descubre todos los videojuegos de este género" %}</p>
     </div>
 
     {% if videojuegos %}
@@ -16,9 +15,9 @@
         <article class="card-genero-juego">
             <div class="imagen-juego">
                 {% if juego.imagen %}
-                    <img src="{% static 'images/' %}{{ juego.imagen }}" alt="Imagen de {{ juego.titulo }}">
+                    <img src="{% static 'images/' %}{{ juego.imagen }}" alt="{% trans 'Imagen de' %} {{ juego.titulo }}">
                 {% else %}
-                    <img src="{% static 'images/no-image.png' %}" alt="Sin imagen disponible">
+                    <img src="{% static 'images/no-image.png' %}" alt="{% trans 'Sin imagen disponible' %}">
                 {% endif %}
             </div>
 
@@ -27,20 +26,22 @@
                     <a href="{% url 'detalle_videojuego' juego.id %}">{{ juego.titulo }}</a>
                 </h3>
                 <p class="descripcion">{{ juego.descripcion|truncatewords:20 }}</p>
-                <p class="plataformas"><strong>Plataformas:</strong>
+                <p class="plataformas"><strong>{% trans "Plataformas" %}:</strong>
                     {% for p in juego.plataformas.all %}
                         {{ p.nombre }}{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </p>
-                <a class="btn-ver" href="{% url 'detalle_videojuego' juego.id %}">Ver detalles</a>
+                <a class="btn-ver" href="{% url 'detalle_videojuego' juego.id %}">{% trans "Ver detalles" %}</a>
             </div>
         </article>
         {% endfor %}
     </div>
     {% else %}
-    <p class="sin-juegos">No hay videojuegos registrados en este género.</p>
+    <p class="sin-juegos">{% trans "No hay videojuegos registrados en este género." %}</p>
     {% endif %}
 
-    <a href="{% url 'generos' %}" class="btn-volver">← Volver a géneros</a>
+    <div class="volver-container" style="margin-top: 20px; text-align: center;">
+        <a href="{% url 'generos' %}" class="btn-secundario">← {% trans "Volver" %}</a>
+    </div>
 </section>
 {% endblock %}
