@@ -1,0 +1,308 @@
+[
+    { "model": "appVideomaniacos.genero", "pk": 1, "fields": { "nombre": "Acción" } },
+    { "model": "appVideomaniacos.genero", "pk": 2, "fields": { "nombre": "Aventura" } },
+    { "model": "appVideomaniacos.genero", "pk": 3, "fields": { "nombre": "RPG" } },
+    { "model": "appVideomaniacos.genero", "pk": 4, "fields": { "nombre": "Deportes" } },
+    { "model": "appVideomaniacos.genero", "pk": 5, "fields": { "nombre": "Mundo Abierto" } },
+    { "model": "appVideomaniacos.genero", "pk": 6, "fields": { "nombre": "Roguelike" } },
+    { "model": "appVideomaniacos.genero", "pk": 7, "fields": { "nombre": "Puzzle" } },
+    { "model": "appVideomaniacos.genero", "pk": 8, "fields": { "nombre": "Simulación" } },
+    { "model": "appVideomaniacos.genero", "pk": 9, "fields": { "nombre": "Shooter" } },
+    { "model": "appVideomaniacos.genero", "pk": 10, "fields": { "nombre": "Plataformas" } },
+    { "model": "appVideomaniacos.genero", "pk": 11, "fields": { "nombre": "Estrategia" } },
+    { "model": "appVideomaniacos.genero", "pk": 12, "fields": { "nombre": "Horror" } },
+    { "model": "appVideomaniacos.genero", "pk": 13, "fields": { "nombre": "Lucha" } },
+    { "model": "appVideomaniacos.genero", "pk": 14, "fields": { "nombre": "Carreras" } },
+
+    { "model": "appVideomaniacos.plataforma", "pk": 1, "fields": { "nombre": "PlayStation 5" } },
+    { "model": "appVideomaniacos.plataforma", "pk": 2, "fields": { "nombre": "Xbox Series X" } },
+    { "model": "appVideomaniacos.plataforma", "pk": 3, "fields": { "nombre": "Nintendo Switch" } },
+    { "model": "appVideomaniacos.plataforma", "pk": 4, "fields": { "nombre": "PC" } },
+
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 1,
+        "fields": {
+            "titulo": "Elden Ring",
+            "descripcion": "Un RPG de mundo abierto desarrollado por FromSoftware, con lore de George R. R. Martin.",
+            "genero": 3,
+            "imagen": "elden_ring.jpg",
+            "fecha_lanzamiento": "2022-02-25",
+            "score": 96.0,
+            "plataformas": [1, 2, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 2,
+        "fields": {
+            "titulo": "The Legend of Zelda: Tears of the Kingdom",
+            "descripcion": "La secuela del aclamado Breath of the Wild, con nuevas mecánicas y exploración aérea.",
+            "genero": 2,
+            "imagen": "zelda_totk.jpg",
+            "fecha_lanzamiento": "2023-05-12",
+            "score": 98.0,
+            "plataformas": [3]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 3,
+        "fields": {
+            "titulo": "FIFA 23",
+            "descripcion": "El simulador de fútbol más popular, con mejoras en la física del balón y licencias oficiales.",
+            "genero": 4,
+            "imagen": "fifa23.jpg",
+            "fecha_lanzamiento": "2022-09-30",
+            "score": 78.0,
+            "plataformas": [1, 2, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 4,
+        "fields": {
+            "titulo": "God of War: Ragnarök",
+            "descripcion": "Kratos y Atreus enfrentan el fin de los tiempos en una épica aventura nórdica.",
+            "genero": 1,
+            "imagen": "gow_ragnarok.jpg",
+            "fecha_lanzamiento": "2022-11-09",
+            "score": 94.0,
+            "plataformas": [1]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 5,
+        "fields": {
+            "titulo": "Cyberpunk 2077",
+            "descripcion": "Un RPG futurista ambientado en Night City, con libertad total de exploración y narrativa profunda.",
+            "genero": 3,
+            "imagen": "cyberpunk2077.jpg",
+            "fecha_lanzamiento": "2020-12-10",
+            "score": 86.0,
+            "plataformas": [1, 2, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 6,
+        "fields": {
+            "titulo": "Grand Theft Auto VI",
+            "descripcion": "La esperadísima secuela de GTA V, ambientada en Vice City con dos protagonistas y un mapa inmenso.",
+            "genero": 5,
+            "imagen": "gta6.jpg",
+            "fecha_lanzamiento": "2025-09-17",
+            "score": 99.0,
+            "plataformas": [1, 2, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 7,
+        "fields": {
+            "titulo": "Escape From Tarkov",
+            "descripcion": "Escape from Tarkov es un simulador de combate en primera persona muy intenso y realista.",
+            "genero": 9,
+            "imagen": "tarkov.png",
+            "fecha_lanzamiento": "2025-11-15",
+            "score": 85.0,
+            "plataformas": [4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 8,
+        "fields": {
+            "titulo": "Balatro",
+            "descripcion": "El roguelike de póker. Balatro es un hipnótico y genial constructor de mazos.",
+            "genero": 6,
+            "imagen": "balatro.png",
+            "fecha_lanzamiento": "2024-02-20",
+            "score": 90.0,
+            "plataformas": [1, 2, 3, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 9,
+        "fields": {
+            "titulo": "Doom",
+            "descripcion": "Un reinicio de la clásica saga de disparos en primera persona, centrado en la velocidad.",
+            "genero": 1,
+            "imagen": "doom.png",
+            "fecha_lanzamiento": "2016-05-13",
+            "score": 88.0,
+            "plataformas": [1, 2, 3, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 10,
+        "fields": {
+            "titulo": "Metroid Dread",
+            "descripcion": "Ponte el traje de Samus Aran y ábrete paso luchando en un mundo alienígena.",
+            "genero": 1,
+            "imagen": "metroid.png",
+            "fecha_lanzamiento": "2021-10-08",
+            "score": 88.0,
+            "plataformas": [3]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 11,
+        "fields": {
+            "titulo": "Inside",
+            "descripcion": "Perseguido y solo, un niño se encuentra en medio de un proyecto oscuro.",
+            "genero": 7,
+            "imagen": "inside.png",
+            "fecha_lanzamiento": "2016-06-07",
+            "score": 93.0,
+            "plataformas": [1, 3, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 12,
+        "fields": {
+            "titulo": "Super Mario Galaxy 2",
+            "descripcion": "Viaja a través de diversas galaxias para recuperar las Estrellas de Poder.",
+            "genero": 10,
+            "imagen": "mario_galaxy_2.png",
+            "fecha_lanzamiento": "2010-05-23",
+            "score": 97.0,
+            "plataformas": [3]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 13,
+        "fields": {
+            "titulo": "Five Night's at Freddy's",
+            "descripcion": "Sobrevive a tus turnos mientras evitas a unos animatrónicos homicidas.",
+            "genero": 12,
+            "imagen": "fnaf_1.png",
+            "fecha_lanzamiento": "2014-12-01",
+            "score": 78.0,
+            "plataformas": [4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 14,
+        "fields": {
+            "titulo": "Europa Universalis IV",
+            "descripcion": "Gobierna tu territorio con rigor histórico y construye un imperio.",
+            "genero": 11,
+            "imagen": "eu_4.png",
+            "fecha_lanzamiento": "2013-08-13",
+            "score": 87.0,
+            "plataformas": [4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 15,
+        "fields": {
+            "titulo": "Minecraft",
+            "descripcion": "Coloca bloques y vive aventuras. Explora mundos infinitos y construye todo lo que puedas imaginar.",
+            "genero": 2,
+            "imagen": "minecraft.png",
+            "fecha_lanzamiento": "2011-11-18",
+            "score": 93.0,
+            "plataformas": [1, 2, 3, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 16,
+        "fields": {
+            "titulo": "The Witcher 3: Wild Hunt",
+            "descripcion": "Eres Geralt de Rivia, cazador de monstruos. Busca a la niña de la profecía en un mundo devastado por la guerra.",
+            "genero": 3,
+            "imagen": "witcher3.png",
+            "fecha_lanzamiento": "2015-05-19",
+            "score": 95.0,
+            "plataformas": [1, 2, 3, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 17,
+        "fields": {
+            "titulo": "Hollow Knight",
+            "descripcion": "Desciende al mundo de Hallownest, un vasto y antiguo reino de insectos y héroes.",
+            "genero": 10,
+            "imagen": "hollow_knight.png",
+            "fecha_lanzamiento": "2017-02-24",
+            "score": 92.0,
+            "plataformas": [1, 2, 3, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 18,
+        "fields": {
+            "titulo": "Mario Kart 8 Deluxe",
+            "descripcion": "Corre y compite con tus amigos en la versión definitiva de Mario Kart.",
+            "genero": 14,
+            "imagen": "mariokart8.png",
+            "fecha_lanzamiento": "2017-04-28",
+            "score": 92.0,
+            "plataformas": [3]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 19,
+        "fields": {
+            "titulo": "Street Fighter 6",
+            "descripcion": "La nueva evolución de la serie de lucha con innovadoras mecánicas y modos de juego.",
+            "genero": 13,
+            "imagen": "sf6.png",
+            "fecha_lanzamiento": "2023-06-02",
+            "score": 92.0,
+            "plataformas": [1, 2, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 20,
+        "fields": {
+            "titulo": "Resident Evil 4 Remake",
+            "descripcion": "La supervivencia es solo el principio. Un remake reimaginado del clásico de terror.",
+            "genero": 12,
+            "imagen": "re4.png",
+            "fecha_lanzamiento": "2023-03-24",
+            "score": 93.0,
+            "plataformas": [1, 2, 4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 21,
+        "fields": {
+            "titulo": "League of Legends",
+            "descripcion": "Juego de estrategia por equipos con más de 140 campeones para realizar jugadas épicas.",
+            "genero": 11,
+            "imagen": "lol.png",
+            "fecha_lanzamiento": "2009-10-27",
+            "score": 80.0,
+            "plataformas": [4]
+        }
+    },
+    {
+        "model": "appVideomaniacos.videojuego",
+        "pk": 22,
+        "fields": {
+            "titulo": "Stardew Valley",
+            "descripcion": "Has heredado la vieja granja de tu abuelo. Armado con herramientas heredadas, empieza tu nueva vida.",
+            "genero": 8,
+            "imagen": "stardew.png",
+            "fecha_lanzamiento": "2016-02-26",
+            "score": 95.0,
+            "plataformas": [1, 2, 3, 4]
+        }
+    }
+]
