@@ -1,0 +1,138 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Inicio"
+msgstr "Startseite"
+
+msgid "Videojuegos"
+msgstr "Videospiele"
+
+msgid "Géneros"
+msgstr "Genres"
+
+msgid "Plataformas"
+msgstr "Plattformen"
+
+msgid "Sugerir juego"
+msgstr "Spiel vorschlagen"
+
+msgid "Todos los derechos reservados"
+msgstr "Alle Rechte vorbehalten"
+
+msgid "Español"
+msgstr "Spanisch"
+
+msgid "English"
+msgstr "Englisch"
+
+msgid "Français"
+msgstr "Französisch"
+
+msgid "Deutsch"
+msgstr "Deutsch"
+
+msgid "Descripción"
+msgstr "Beschreibung"
+
+msgid "Género"
+msgstr "Genre"
+
+msgid "Fecha de Lanzamiento"
+msgstr "Veröffentlichungsdatum"
+
+msgid "Volver"
+msgstr "Zurück"
+
+msgid "Lista de Videojuegos"
+msgstr "Liste der Videospiele"
+
+msgid "Ver detalles"
+msgstr "Details anzeigen"
+
+msgid "No hay videojuegos disponibles."
+msgstr "Keine Videospiele verfügbar."
+
+msgid "Lanzamiento"
+msgstr "Veröffentlichung"
+
+msgid "Últimos videojuegos por género"
+msgstr "Neueste Videospiele nach Genre"
+
+msgid "Explora los Géneros de Videojuegos"
+msgstr "Entdecke Videospiel-Genres"
+
+msgid "Descubre los diferentes estilos de videojuegos disponibles. Cada género tiene su propia esencia."
+msgstr "Entdecke die verschiedenen Stile der verfügbaren Videospiele. Jedes Genre hat seine eigene Essenz."
+
+msgid "Ver juegos"
+msgstr "Spiele ansehen"
+
+msgid "No hay géneros registrados."
+msgstr "Keine Genres registriert."
+
+msgid "Descubre todos los videojuegos de este género"
+msgstr "Entdecke alle Videospiele dieses Genres"
+
+msgid "Imagen de"
+msgstr "Bild von"
+
+msgid "Sin imagen disponible"
+msgstr "Kein Bild verfügbar"
+
+msgid "No hay videojuegos registrados en este género."
+msgstr "Keine Videospiele in diesem Genre registriert."
+
+msgid "Explora tus plataformas favoritas"
+msgstr "Entdecke deine Lieblingsplattformen"
+
+msgid "No hay plataformas registradas."
+msgstr "Keine Plattformen registriert."
+
+msgid "Explora los videojuegos disponibles en esta plataforma y descubre lo mejor que tiene para ofrecer."
+msgstr "Entdecke die verfügbaren Videospiele auf dieser Plattform und finde heraus, was sie zu bieten hat."
+
+msgid "Videojuegos disponibles"
+msgstr "Verfügbare Videospiele"
+
+msgid "No hay videojuegos registrados en esta plataforma."
+msgstr "Keine Videospiele auf dieser Plattform registriert."
+
+msgid "Acción"
+msgstr "Action"
+
+msgid "Aventura"
+msgstr "Abenteuer"
+
+msgid "RPG"
+msgstr "RPG"
+
+msgid "Deportes"
+msgstr "Sport"
+
+msgid "Mundo Abierto"
+msgstr "Offene Welt"
+
+msgid "Roguelike"
+msgstr "Roguelike"
+
+msgid "Puzzle"
+msgstr "Puzzle"
+
+msgid "Simulación"
+msgstr "Simulation"
+
+msgid "Shooter"
+msgstr "Shooter"
+
+msgid "Estrategia"
+msgstr "Strategie"
+
+msgid "Horror"
+msgstr "Horror"
+
+msgid "Lucha"
+msgstr "Kampf"
+
+msgid "Carreras"
+msgstr "Rennen"

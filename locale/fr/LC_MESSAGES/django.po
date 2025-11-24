@@ -1,0 +1,138 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Inicio"
+msgstr "Accueil"
+
+msgid "Videojuegos"
+msgstr "Jeux Vidéo"
+
+msgid "Géneros"
+msgstr "Genres"
+
+msgid "Plataformas"
+msgstr "Plateformes"
+
+msgid "Sugerir juego"
+msgstr "Suggérer un jeu"
+
+msgid "Todos los derechos reservados"
+msgstr "Tous droits réservés"
+
+msgid "Español"
+msgstr "Espagnol"
+
+msgid "English"
+msgstr "Anglais"
+
+msgid "Français"
+msgstr "Français"
+
+msgid "Deutsch"
+msgstr "Allemand"
+
+msgid "Descripción"
+msgstr "Description"
+
+msgid "Género"
+msgstr "Genre"
+
+msgid "Fecha de Lanzamiento"
+msgstr "Date de sortie"
+
+msgid "Volver"
+msgstr "Retour"
+
+msgid "Lista de Videojuegos"
+msgstr "Liste des jeux vidéo"
+
+msgid "Ver detalles"
+msgstr "Voir les détails"
+
+msgid "No hay videojuegos disponibles."
+msgstr "Aucun jeu vidéo disponible."
+
+msgid "Lanzamiento"
+msgstr "Sortie"
+
+msgid "Últimos videojuegos por género"
+msgstr "Derniers jeux vidéo par genre"
+
+msgid "Explora los Géneros de Videojuegos"
+msgstr "Explorez les genres de jeux vidéo"
+
+msgid "Descubre los diferentes estilos de videojuegos disponibles. Cada género tiene su propia esencia."
+msgstr "Découvrez les différents styles de jeux vidéo disponibles. Chaque genre a sa propre essence."
+
+msgid "Ver juegos"
+msgstr "Voir les jeux"
+
+msgid "No hay géneros registrados."
+msgstr "Aucun genre enregistré."
+
+msgid "Descubre todos los videojuegos de este género"
+msgstr "Découvrez tous les jeux vidéo de ce genre"
+
+msgid "Imagen de"
+msgstr "Image de"
+
+msgid "Sin imagen disponible"
+msgstr "Aucune image disponible"
+
+msgid "No hay videojuegos registrados en este género."
+msgstr "Aucun jeu vidéo enregistré dans ce genre."
+
+msgid "Explora tus plataformas favoritas"
+msgstr "Explorez vos plateformes préférées"
+
+msgid "No hay plataformas registradas."
+msgstr "Aucune plateforme enregistrée."
+
+msgid "Explora los videojuegos disponibles en esta plataforma y descubre lo mejor que tiene para ofrecer."
+msgstr "Explorez les jeux disponibles sur cette plateforme et découvrez ce qu'elle a de mieux à offrir."
+
+msgid "Videojuegos disponibles"
+msgstr "Jeux vidéo disponibles"
+
+msgid "No hay videojuegos registrados en esta plataforma."
+msgstr "Aucun jeu vidéo enregistré sur cette plateforme."
+
+msgid "Acción"
+msgstr "Action"
+
+msgid "Aventura"
+msgstr "Aventure"
+
+msgid "RPG"
+msgstr "RPG"
+
+msgid "Deportes"
+msgstr "Sports"
+
+msgid "Mundo Abierto"
+msgstr "Monde Ouvert"
+
+msgid "Roguelike"
+msgstr "Roguelike"
+
+msgid "Puzzle"
+msgstr "Puzzle"
+
+msgid "Simulación"
+msgstr "Simulation"
+
+msgid "Shooter"
+msgstr "Tir"
+
+msgid "Estrategia"
+msgstr "Stratégie"
+
+msgid "Horror"
+msgstr "Horreur"
+
+msgid "Lucha"
+msgstr "Combat"
+
+msgid "Carreras"
+msgstr "Course"

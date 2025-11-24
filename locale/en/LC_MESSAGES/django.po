@@ -1,0 +1,138 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Inicio"
+msgstr "Home"
+
+msgid "Videojuegos"
+msgstr "Video Games"
+
+msgid "Géneros"
+msgstr "Genres"
+
+msgid "Plataformas"
+msgstr "Platforms"
+
+msgid "Sugerir juego"
+msgstr "Suggest Game"
+
+msgid "Todos los derechos reservados"
+msgstr "All rights reserved"
+
+msgid "Español"
+msgstr "Spanish"
+
+msgid "English"
+msgstr "English"
+
+msgid "Français"
+msgstr "French"
+
+msgid "Deutsch"
+msgstr "German"
+
+msgid "Descripción"
+msgstr "Description"
+
+msgid "Género"
+msgstr "Genre"
+
+msgid "Fecha de Lanzamiento"
+msgstr "Release Date"
+
+msgid "Volver"
+msgstr "Back"
+
+msgid "Lista de Videojuegos"
+msgstr "Video Games List"
+
+msgid "Ver detalles"
+msgstr "View details"
+
+msgid "No hay videojuegos disponibles."
+msgstr "No video games available."
+
+msgid "Lanzamiento"
+msgstr "Release"
+
+msgid "Últimos videojuegos por género"
+msgstr "Latest video games by genre"
+
+msgid "Explora los Géneros de Videojuegos"
+msgstr "Explore Video Game Genres"
+
+msgid "Descubre los diferentes estilos de videojuegos disponibles. Cada género tiene su propia esencia."
+msgstr "Discover the different styles of video games available. Each genre has its own essence."
+
+msgid "Ver juegos"
+msgstr "View Games"
+
+msgid "No hay géneros registrados."
+msgstr "No genres registered."
+
+msgid "Descubre todos los videojuegos de este género"
+msgstr "Discover all video games in this genre"
+
+msgid "Imagen de"
+msgstr "Image of"
+
+msgid "Sin imagen disponible"
+msgstr "No image available"
+
+msgid "No hay videojuegos registrados en este género."
+msgstr "No video games registered in this genre."
+
+msgid "Explora tus plataformas favoritas"
+msgstr "Explore your favorite platforms"
+
+msgid "No hay plataformas registradas."
+msgstr "No platforms registered."
+
+msgid "Explora los videojuegos disponibles en esta plataforma y descubre lo mejor que tiene para ofrecer."
+msgstr "Explore the video games available on this platform and discover the best it has to offer."
+
+msgid "Videojuegos disponibles"
+msgstr "Available video games"
+
+msgid "No hay videojuegos registrados en esta plataforma."
+msgstr "No video games registered on this platform."
+
+msgid "Acción"
+msgstr "Action"
+
+msgid "Aventura"
+msgstr "Adventure"
+
+msgid "RPG"
+msgstr "RPG"
+
+msgid "Deportes"
+msgstr "Sports"
+
+msgid "Mundo Abierto"
+msgstr "Open World"
+
+msgid "Roguelike"
+msgstr "Roguelike"
+
+msgid "Puzzle"
+msgstr "Puzzle"
+
+msgid "Simulación"
+msgstr "Simulation"
+
+msgid "Shooter"
+msgstr "Shooter"
+
+msgid "Estrategia"
+msgstr "Strategy"
+
+msgid "Horror"
+msgstr "Horror"
+
+msgid "Lucha"
+msgstr "Fighting"
+
+msgid "Carreras"
+msgstr "Racing"
