@@ -17,6 +17,9 @@ msgstr "Plateformes"
 msgid "Sugerir juego"
 msgstr "Suggérer un jeu"
 
+msgid "Contáctanos"
+msgstr "Contactez-nous"
+
 msgid "Todos los derechos reservados"
 msgstr "Tous droits réservés"
 
