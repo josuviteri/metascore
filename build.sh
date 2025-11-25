@@ -5,8 +5,11 @@ set -o errexit
 # Instalar dependencias
 pip install -r requirements.txt
 
-# Recopilar archivos estáticos (CSS, imágenes)
+# Recopilar archivos estáticos
 python manage.py collectstatic --no-input
 
-# Aplicar migraciones a la base de datos
+# Crear las tablas en la base de datos
 python manage.py migrate
+
+# Cargar los datos iniciales automáticamente
+python manage.py loaddata initial_data.json
