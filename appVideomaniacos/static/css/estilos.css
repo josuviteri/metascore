@@ -98,7 +98,7 @@ body.dark-mode footer {
 
 /* Example: videojuegos page */
 body.dark-mode .videojuegos-section h2 {
-    color: white; /* override your dark h2 */
+    color: #1e7dc5;
 }
 
 /* -------------------------------------- */
@@ -163,9 +163,10 @@ body.dark-mode .videojuegos-section h2 {
 
 /* ==== HEADINGS ==== */
 h2 {
-    color: #005a9f;
+    color: #1e7dc5;
     border-bottom: 2px solid #00b4d8;
     padding-bottom: 0.3em;
+    text-align: center;
 }
 
 /* ==== LISTS ==== */
@@ -232,9 +233,8 @@ footer {
 
 .videojuegos-section > h2 {
   margin: 0 0 1rem;
-  font-size: 1.6rem;
   letter-spacing: .2px;
-  color: #005a9f;
+  color: #1e7dc5;
   border-bottom: 2px solid #00b4d8;
   padding-bottom: .5rem;
 }
@@ -290,7 +290,6 @@ footer {
 }
 
 .videojuego-title {
-    font-size: 1.2em;
     color: #1e1e2f;
     margin-bottom: 0.5em;
 }
@@ -495,8 +494,7 @@ footer {
 }
 
 .generos-section h2 {
-    font-size: 2.2em;
-    color: #1e1e2f;
+    color: #1e7dc5;
     margin-bottom: 0.5em;
 }
 
@@ -595,7 +593,6 @@ footer {
 }
 
 .header-genero h2 {
-    font-size: 2.2em;
     color: #1e1e2f;
     margin-bottom: 0.3em;
 }
@@ -701,8 +698,7 @@ footer {
 }
 
 .header-plataformas h2 {
-    color: #005a9f;
-    font-size: 2em;
+    color: #1e7dc5;
     margin-bottom: 0.2em;
 }
 
@@ -809,7 +805,6 @@ footer {
 }
 
 .plataforma-info h2 {
-    font-size: 2em;
     margin-bottom: 0.4em;
     color: inherit;
 }
@@ -1007,7 +1002,7 @@ footer {
 
 .titulo-videojuegos {
     margin-top: 2em;
-    color: #005a9f;
+    color: #1e7dc5;
 }
 
 /* ==== TARJETAS DE JUEGOS ==== */
@@ -1100,9 +1095,8 @@ footer {
 }
 .form-section > h2 {
   margin: 0 0 1rem;
-  font-size: 1.6rem;
   letter-spacing: .2px;
-  color: #005a9f;
+  color: #1e7dc5;
   border-bottom: 2px solid #00b4d8;
   padding-bottom: .5rem;
 }
@@ -1229,4 +1223,20 @@ textarea {
   .form-section { padding: 1.5rem 1rem; }
 }
 
+.enlace-genero {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
 
+.enlace-genero:hover {
+    color: #00b4d8; 
+    text-decoration: underline;
+}
+
+h1 {
+    text-decoration: none;
+    color: #1e7dc5;
+    transition: all 0.3s ease;
+    text-align: center;
+}

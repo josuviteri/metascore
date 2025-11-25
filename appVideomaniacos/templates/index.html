@@ -1,18 +1,27 @@
 {% extends "base.html" %}
 {% load static %}
-{% load i18n %} {% block titulo %}{% trans "Inicio" %} - MetaScore{% endblock %}
+{% load i18n %} 
+
+{% block titulo %}{% trans "Inicio" %} - MetaScore{% endblock %}
 
 {% block contenido %}
 <section>
-    <h2>{% trans "Últimos videojuegos por género" %}</h2>
+    <h1>{% trans "Últimos videojuegos por género" %}</h1>
     <div class="grid">
         {% for genero, videojuego in videojuegos_por_genero.items %}
             {% if videojuego %}
             <article class="card">
-                <h2>{{ genero.nombre }}</h2>
+                <h2>
+                    <a href="{% url 'detalle_genero' genero.id %}" class="link-genero">
+                        {{ genero.nombre }}
+                    </a>
+                </h2>
                 {% if videojuego.imagen %}
-                    <img src="{% static 'images/' %}{{ videojuego.imagen }}" alt="Portada de {{ videojuego.titulo }}">
+                    <a href="{% url 'detalle_videojuego' videojuego.id %}">
+                        <img src="{% static 'images/' %}{{ videojuego.imagen }}" alt="Portada de {{ videojuego.titulo }}">
+                    </a>
                 {% endif %}
+                
                 <h3 class="videojuego-title">
                     <a href="{% url 'detalle_videojuego' videojuego.id %}">{{ videojuego.titulo }}</a>
                 </h3>
