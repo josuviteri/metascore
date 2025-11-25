@@ -51,9 +51,14 @@
                     <img src="{% static 'images/icon_plataformas.png' %}" alt="{% trans 'Plataformas' %}">
                 {% elif g.nombre|lower == "horror" %}
                     <img src="{% static 'images/icon_horror.png' %}" alt="{% trans 'Horror' %}"> 
+                {% elif g.nombre|lower == "lucha" %}
+                    <img src="{% static 'images/icon_lucha.png' %}" alt="{% trans 'Lucha' %}">
+                {% elif g.nombre|lower == "carreras" %}
+                    <img src="{% static 'images/icon_carreras.png' %}" alt="{% trans 'Carreras' %}">
                 {% else %}
                     <img src="{% static 'images/icon_genero.png' %}" alt="{% trans 'Género' %}">
                 {% endif %}
+
             </div>
 
             <h3>{% trans g.nombre %}</h3>
