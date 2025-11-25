@@ -435,8 +435,7 @@ footer {
     margin-top: 2em;
 }
 
-.btn-volver,
-.btn-inicio {
+.btn-volver {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -448,19 +447,29 @@ footer {
     color: #fff;
     background-color: #00b4d8;
     transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.btn-volver {
     font-weight: bold;
 }
 
 .btn-inicio {
-    background-color: #00b4d8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    padding: 0 1.5em;
+    border-radius: 8px;
+    font-size: 1em;
+    text-decoration: none;
     color: #fff;
+    background-color: #000000;
     font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.btn-volver:hover,
+.btn-volver:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
 .btn-inicio:hover {
     background-color: #0056b3;
     transform: scale(1.03);

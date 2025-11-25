@@ -37,8 +37,10 @@
                 {{ videojuego.score }}
             </p>
 
-            <div class="detalle-botones">
-                <a href="{% url 'videojuegos' %}" class="btn-volver">← {% trans "Volver" %}</a>
+            <div class="volver-container" style="margin-top: 30px; display: flex; justify-content: center; gap: 15px;">
+                <a href="{% url 'generos' %}" class="btn-volver">← {% trans "Volver" %}</a>
+            
+                <a href="{% url 'index' %}" class="btn-inicio">{% trans "Inicio" %}</a>
             </div>
         </div>
     </div>
