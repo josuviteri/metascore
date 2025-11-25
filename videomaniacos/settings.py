@@ -38,7 +38,7 @@ if not SECRET_KEY:
     raise ValueError("Missing DJANGO_SECRET_KEY environment variable!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
@@ -49,7 +49,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY' 
 
 
-ALLOWED_HOSTS = ["renderapp.xd", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["metascore.onrender.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
