@@ -54,6 +54,83 @@ nav li {
     display: inline-block;
 }
 
+
+/* -------------------------------------- */
+/* LANGUAGE SWITCH BUTTON STYLES */
+/* -------------------------------------- */
+.lang-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.lang-btn {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* -------------------------------------- */
+/* DARK MODE BASE */
+/* -------------------------------------- */
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: white; /* FIXED: was black */
+}
+
+/* These elements inherit dark mode colors */
+body.dark-mode header,
+body.dark-mode nav,
+body.dark-mode footer {
+    background-color: #111;
+}
+
+/* -------------------------------------- */
+/* DARK MODE FIXES FOR INDIVIDUAL PAGES */
+/* -------------------------------------- */
+
+/* Example: videojuegos page */
+body.dark-mode .videojuegos-section h2 {
+    color: white; /* override your dark h2 */
+}
+
+/* -------------------------------------- */
+/* DARK MODE TOGGLE BUTTON */
+/* -------------------------------------- */
+#darkModeToggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 6px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    background: transparent;
+    color: white;
+    font-size: 0.8em;
+}
+
+#darkModeToggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
 /* === Botones de navegación y acción === */
 .nav-btn {
     display: inline-block;
@@ -86,7 +163,7 @@ nav li {
 
 /* ==== HEADINGS ==== */
 h2 {
-    color: #2b2d42;
+    color: #005a9f;
     border-bottom: 2px solid #00b4d8;
     padding-bottom: 0.3em;
 }
@@ -153,13 +230,16 @@ footer {
     padding: 2em 1em;
 }
 
-.videojuegos-section h2 {
-    font-size: 2em;
-    color: #1e1e2f;
-    margin-bottom: 1.5em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.videojuegos-section > h2 {
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+  letter-spacing: .2px;
+  color: #005a9f;
+  border-bottom: 2px solid #00b4d8;
+  padding-bottom: .5rem;
 }
+
+
 
 .videojuegos-grid {
     display: grid;
@@ -621,7 +701,7 @@ footer {
 }
 
 .header-plataformas h2 {
-    color: #2b2d42;
+    color: #005a9f;
     font-size: 2em;
     margin-bottom: 0.2em;
 }
@@ -927,7 +1007,7 @@ footer {
 
 .titulo-videojuegos {
     margin-top: 2em;
-    color: #2b2d42;
+    color: #005a9f;
 }
 
 /* ==== TARJETAS DE JUEGOS ==== */
