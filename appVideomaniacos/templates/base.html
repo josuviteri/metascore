@@ -1,59 +1,15 @@
 <!DOCTYPE html>
 {% load static %}
-{% load i18n %} <html lang="{{ LANGUAGE_CODE }}"> <head>
+{% load i18n %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block titulo %}MetaScore{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
-    
-    <style>  
-        .lang-switch { position: absolute; top: 20px; right: 20px; }
-        .lang-btn { background: none; border: 1px solid #fff; color: #fff; padding: 5px; cursor: pointer; font-size: 0.8em; }
-        .lang-btn:hover { background: rgba(255,255,255,0.2); }
-
-            /* DARK MODE BASE */
-    body.dark-mode {
-        background-color: #1e1e1e;
-        color: black;
-    }
-
-    
-
-    h2.dark-mode .videojuegos-section h2 {
-    color: white;
-    }
-
-    
-    
-
-    header.dark-mode, nav.dark-mode, footer.dark-mode, body.dark-mode {
-        background-color: #111;
-    }
-
-    /* Dark mode toggle button */
-    #darkModeToggle {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        padding: 6px 24px;
-        border-radius: 6px;
-        cursor: pointer;
-        border: 1px solid #fff;
-        background: transparent;
-        color: white;
-        font-size: 0.8em;
-    }
-
-    #darkModeToggle:hover {
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-
-    </style> 
-
-
 </head>
+
 <body>
     <header>
         <h1>MetaScore</h1>
@@ -63,7 +19,7 @@
             <form action="{% url 'set_language' %}" method="post">
                 {% csrf_token %}
                 <input name="next" type="hidden" value="{{ redirect_to }}">
-                <select name="language" onchange="this.form.submit()" style="padding: 5px; border-radius: 5px;">
+                <select name="language" onchange="this.form.submit()">
                     {% get_current_language as LANGUAGE_CODE %}
                     {% get_available_languages as LANGUAGES %}
                     {% get_language_info_list for LANGUAGES as languages %}
@@ -82,8 +38,7 @@
             <a href="{% url 'generos' %}">{% trans "Géneros" %}</a> |
             <a href="{% url 'plataformas' %}">{% trans "Plataformas" %}</a> |
             <a href="{% url 'formulario' %}">{% trans "Sugerir juego" %}</a> |
-            <a href="{% url 'formulario_contacto' %}">{% trans "Contáctanos" %}</a> 
-            
+            <a href="{% url 'formulario_contacto' %}">{% trans "Contáctanos" %}</a>
         </nav>
     </header>
 
@@ -119,8 +74,6 @@
             }
         });
     </script>
-
-
 
 </body>
 </html>

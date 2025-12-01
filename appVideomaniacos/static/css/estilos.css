@@ -1249,3 +1249,51 @@ h1 {
     transition: all 0.3s ease;
     text-align: center;
 }
+
+/* === LANGUAGE SWITCH === */
+.lang-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.lang-switch select {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* === DARK MODE === */
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: black;
+}
+
+header.dark-mode,
+nav.dark-mode,
+footer.dark-mode {
+    background-color: #111;
+}
+
+/* Fix heading color in dark mode */
+.videojuegos-section h2,
+h2.dark-mode {
+    color: white;
+}
+
+/* === Dark mode toggle button === */
+#darkModeToggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 6px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    background: transparent;
+    color: white;
+    font-size: 0.8em;
+}
+
+#darkModeToggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
