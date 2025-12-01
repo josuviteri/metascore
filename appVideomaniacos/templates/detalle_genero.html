@@ -1,20 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
-{% load i18n %} 
+{% load i18n %}
 
 {% block titulo %}{{ genero.nombre }} - MetaScore{% endblock %}
 
 {% block contenido %}
 <section class="genero-detalle">
+
     <div class="header-genero">
         <h2>{{ genero.nombre }}</h2>
         <p class="subtitulo-genero">{% trans "Descubre todos los videojuegos de este género" %}</p>
     </div>
 
-    {% if videojuegos %}
+    {% if genero.videojuego_set.all %}
     <div class="grid-genero">
-        {% for juego in videojuegos %}
+
+        {% for juego in genero.videojuego_set.all %}
         <article class="card-genero-juego">
+
             <div class="imagen-juego">
                 {% if juego.imagen %}
                     <img src="{% static 'images/' %}{{ juego.imagen }}" alt="{% trans 'Imagen de' %} {{ juego.titulo }}">
@@ -27,25 +30,31 @@
                 <h3 class="videojuego-title">
                     <a href="{% url 'detalle_videojuego' juego.id %}">{{ juego.titulo }}</a>
                 </h3>
+
                 <p class="descripcion">{{ juego.descripcion|truncatewords:20 }}</p>
+
                 <p class="plataformas"><strong>{% trans "Plataformas" %}:</strong>
                     {% for p in juego.plataformas.all %}
                         {{ p.nombre }}{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </p>
+
                 <a class="btn-ver" href="{% url 'detalle_videojuego' juego.id %}">{% trans "Ver detalles" %}</a>
             </div>
+
         </article>
         {% endfor %}
+
     </div>
+
     {% else %}
-    <p class="sin-juegos">{% trans "No hay videojuegos registrados en este género." %}</p>
+        <p class="sin-juegos">{% trans "No hay videojuegos registrados en este género." %}</p>
     {% endif %}
 
-    <div class="volver-container" style="margin-top: 30px; display: flex; justify-content: center; gap: 15px;">
+    <div class="volver-container">
         <a href="{% url 'generos' %}" class="btn-volver">← {% trans "Volver" %}</a>
-        
         <a href="{% url 'index' %}" class="btn-inicio">{% trans "Inicio" %}</a>
     </div>
+
 </section>
 {% endblock %}

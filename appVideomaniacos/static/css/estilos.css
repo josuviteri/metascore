@@ -1057,9 +1057,12 @@ footer {
 }
 
 .volver-container {
-    text-align: center;
-    margin-top: 2em;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
+
 /* ===== Fondos suaves según la plataforma ===== */
 .detalle-plataforma {
     color: #222 !important;
