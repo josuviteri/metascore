@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
-{% load i18n %} {% block titulo %}{{ plataforma.nombre }} - MetaScore{% endblock %}
+{% load i18n %}
+
+{% block titulo %}{{ plataforma.nombre }} - MetaScore{% endblock %}
 
 {% block contenido %}
 <section class="detalle-plataforma {{ plataforma.nombre|lower|slugify }}">
@@ -14,10 +16,11 @@
         </div>
     </div>
 
-    {% if videojuegos %}
+    {% if plataforma.videojuego_set.all %}
     <h3 class="titulo-videojuegos">{% trans "Videojuegos disponibles" %}</h3>
+
     <div class="grid">
-        {% for v in videojuegos %}
+        {% for v in plataforma.videojuego_set.all %}
         <article class="card">
             <img src="{% static 'images/' %}{{ v.imagen }}" alt="{{ v.titulo }}">
             <h4>{{ v.titulo }}</h4>
@@ -25,11 +28,12 @@
         </article>
         {% endfor %}
     </div>
+
     {% else %}
-    <p class="sin-juegos">{% trans "No hay videojuegos registrados en esta plataforma." %}</p>
+        <p class="sin-juegos">{% trans "No hay videojuegos registrados en esta plataforma." %}</p>
     {% endif %}
 
-    <div class="volver-container" style="margin-top: 20px;">
+    <div class="volver-container">
         <a href="{% url 'plataformas' %}" class="btn-volver">← {% trans "Volver" %}</a>
     </div>
 </section>
