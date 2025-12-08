@@ -1300,3 +1300,22 @@ h2.dark-mode {
 #darkModeToggle:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+
+/* Hace que el campo ocupe las 2 columnas en pantallas grandes */
+.form-field-full {
+    grid-column: 1 / -1;
+}
+
+/* Estilos para los mensajes de error del formulario */
+.error-text {
+    color: #ff6b6b;
+    font-size: 0.8em;
+    margin-top: 0.4em;
+    font-weight: 600;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
